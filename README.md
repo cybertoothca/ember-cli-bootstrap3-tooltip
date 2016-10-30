@@ -34,6 +34,11 @@ can be added to new or existing components.
 _Further information about these items can be found in the Usage 
 section below._
 
+## Requirements
+
+* Ember >= 1.13.0
+* Ember CLI
+
 ## Installation
 
 The following will install this addon:
@@ -42,6 +47,12 @@ The following will install this addon:
 
 __As mentioned you must install some version of Bootstrap3 in your
 Ember application should you want this to work.__
+
+### Upgrading
+
+When working through the Ember upgrade process, I recommend
+invoking the `ember install ember-cli-boostrap3-tooltip` command once 
+you are done to get the latest version of the addon.
 
 ## Usage
 
