@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 /**
  * The Tooltip mixin can be added to new or existing components to enable the Bootstrap tooltip.
- * NOTICE: This does not currently handle dynamic-changing title/tooltip values.
  * @see http://getbootstrap.com/javascript/#tooltips-options
  */
 export default Ember.Mixin.create({
