@@ -3,6 +3,28 @@
 </section>
 
 <section class="container">
-  <h2><code>span</code></h2>
-  {{#twbs-span title="Some sort of span title"}}Hover over this span for a title.{{/twbs-span}}
+  <h2><code>twbs-abbr</code></h2>
+  <ul class="list-unstyled">
+    <li>{{#twbs-abbr title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - basic</li>
+    <li>{{#twbs-abbr annimation?=false title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - no animation</li>
+    <li>{{#twbs-abbr delayShow=2000 title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - show-delay of 2000ms</li>
+    <li>{{#twbs-abbr html?=true title="Best Friends, <strong>Forever</strong>"}}
+      BFF{{/twbs-abbr}} - rendered with some html markup
+    </li>
+    <li>{{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - placement on the right</li>
+  </ul>
+</section>
+
+<section class="container">
+  <h2><code>twbs-cite</code></h2>
+  <blockquote>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <footer>Someone famous in {{#twbs-cite title="Source Title"}}Source Title{{/twbs-cite}}</footer>
+  </blockquote>
+</section>
+
+<section class="container">
+  <h2><code>twbs-span</code></h2>
+  {{#twbs-span title="Some sort of span title"}}
+    Hover over this span to checkout the default Bootstrap tooltip.{{/twbs-span}}
 </section>

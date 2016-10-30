@@ -19,9 +19,20 @@ export default Ember.Mixin.create({
    */
   attributeBindings: ['title'],
   /**
-   * In millis.
+   * Default title value if title attribute isn't present.
+   *
+   * If a function is given, it will be called with its this reference set to the element that the tooltip is
+   * attached to.
    */
-  delay: 0,
+  defaultTitle: '',
+  /**
+   * Delay hiding the tooltip (ms) - does not apply to manual trigger type.
+   */
+  delayHide: 0,
+  /**
+   * Delay showing the tooltip (ms) - does not apply to manual trigger type.
+   */
+  delayShow: 0,
   /**
    * Read-only access to the html? flag.
    */
@@ -41,10 +52,42 @@ export default Ember.Mixin.create({
    */
   placement: 'top',
   /**
+   * f a selector is provided, tooltip objects will be delegated to the specified targets. In practice,
+   * this is used to enable dynamic HTML content to have tooltips added. See
+   * this (https://github.com/twbs/bootstrap/issues/4215) and an
+   * informative example (http://jsbin.com/zopod/1/edit).
+   */
+  selector: false,
+  /**
+   * Base HTML to use when creating the tooltip.
+   *
+   * The tooltip's title will be injected into the .tooltip-inner.
+   *
+   * .tooltip-arrow will become the tooltip's arrow.
+   *
+   * The outermost wrapper element should have the .tooltip class.
+   */
+  template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+  /**
+   * Appends the tooltip to a specific element. Example: container: 'body'. This option is particularly
+   * useful in that it allows you to position the tooltip in the flow of the document near the
+   * triggering element - which will prevent the tooltip from floating away from the triggering element
+   * during a window resize.
+   */
+  tooltipContainer: false,
+  /**
    * How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them
    * with a space. manual cannot be combined with any other trigger.
    */
   tooltipTrigger: 'hover focus',
+  /**
+   * Keeps the tooltip within the bounds of this element. Example: viewport: '#viewport'
+   * or { "selector": "#viewport", "padding": 0 }
+   *
+   * If a function is given, it is called with the triggering element DOM node as its only argument. The
+   * this context is set to the tooltip instance.
+   */
+  viewport: {selector: 'body', padding: 0},
   /**
    * Destroy the bootstrap tooltip when the component is being destroyed.
    * @private
@@ -59,12 +102,12 @@ export default Ember.Mixin.create({
    * @private
    */
   _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
-    if (Ember.isPresent(this.get('title'))) {
-      const options = this.getProperties('animation', 'delay', 'html', 'placement');
-      options.trigger = this.get('tooltipTrigger');
-      this.$().tooltip(options);
-    } else {
-      this.$().tooltip('destroy');
-    }
+    const options = this.getProperties(
+      'animation', 'html', 'placement', 'selector', 'template', 'viewport');
+    options.container = this.get('tooltipContainer');
+    options.delay = {show: this.get('delayShow'), hide: this.get('delayHide')};
+    options.trigger = this.get('tooltipTrigger');
+    options.title = this.get('defaultTitle');
+    this.$().tooltip(options);
   }))
 });

@@ -17,7 +17,8 @@ test('when an empty block is passed', function (assert) {
   `);
   assert.ok(this.$('span').hasClass('twbs-span'));
   assert.equal(this.$().text().trim(), '');
-  assert.equal(this.$('span').attr('data-original-title'), undefined);
+  assert.equal(this.$('span').attr('title'), '');
+  assert.equal(this.$('span').attr('data-original-title'), '');
 });
 
 test('when a block is passed', function (assert) {
@@ -26,15 +27,7 @@ test('when a block is passed', function (assert) {
   `);
   assert.ok(this.$('span').hasClass('twbs-span'));
   assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('span').attr('title'), '', 'The title attribute is cleared');
   assert.equal(this.$('span').attr('data-original-title'), 'Some sort of title');
   assert.equal(this.$('span').text().trim(), 'template block text');
-});
-
-test('when rendering with the class `initialism`', function (assert) {
-  this.render(hbs`
-    {{#twbs-span title="Some tooltip message." classNames='initialism'}}
-      Span
-    {{/twbs-span}}
-  `);
-  assert.ok(this.$('span').hasClass('initialism'), 'The `initialism` class is present.');
 });
