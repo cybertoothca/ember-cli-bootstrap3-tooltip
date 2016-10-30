@@ -8,10 +8,10 @@ given element's title attribute.  Also provided is a mixin that
 can be used to enable the Bootstrap Tooltip in your new or existing 
 components.
 
-__You must have Bootstrap 3.x installed in your Ember application.__
+__You must have Bootstrap 3.x installed in your Ember application.__  
 Feel free to use the 
 [ember-cli-bootstrap3-sass](https://emberobserver.com/addons/ember-cli-bootstrap3-sass) 
-addon to setup Bootstrap.
+addon to setup Bootstrap if you haven't already done so.
 
 ## What Does This Addon Do?
 
@@ -51,7 +51,7 @@ Ember application should you want this to work.__
 ### Upgrading
 
 When working through the Ember upgrade process, I recommend
-invoking the `ember install ember-cli-boostrap3-tooltip` command once 
+invoking the `ember install ember-cli-bootstrap3-tooltip` command once 
 you are done to get the latest version of the addon.
 
 ## Usage

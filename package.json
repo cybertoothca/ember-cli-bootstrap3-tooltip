@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-bootstrap3-tooltip",
   "version": "1.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "This addon provides several components that will generate Bootstrap Tooltips (http://getbootstrap.com/javascript/#tooltips) from the given element's title attribute.  Also provided is a mixin that can be used to enable the Bootstrap Tooltip in your new or existing components.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,7 +11,10 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -41,7 +44,14 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "tooltip",
+    "bootstrap",
+    "abbr",
+    "cite",
+    "span",
+    "bootstrap tooltip",
+    "cybertooth"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
