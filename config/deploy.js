@@ -10,7 +10,7 @@ module.exports = function (/*deployTarget*/) {
       bucket: 'ember-cli-bootstrap3-tooltip.cybertooth.io',
       filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html}',
       profile: 'cybertooth',
-      region: 'us-west-2'
+      region: 'ca-central-1'
     }
   };
 
