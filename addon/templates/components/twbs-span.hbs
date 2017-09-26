@@ -1,1 +1,5 @@
-{{yield}}
+{{yield
+  (hash
+    title=(component "twbs-span/title" register=(action "setElementTitle"))
+  )
+}}

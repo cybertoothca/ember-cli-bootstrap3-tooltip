@@ -33,8 +33,8 @@ a tooltip into `<a>`nchor or `<button>` elements.
 
 ...and the following _mixins_:
 
-*  `Tooltip` - imported as 
-`import Tooltip as 'ember-cli-bootstrap3-tooltip/mixins/tooltip'` and
+*  `TwbsTooltip` - imported as 
+`import TwbsTooltip as 'ember-cli-bootstrap3-tooltip/mixins/twbs-tooltip'` and
 can be added to new or existing components.
 
 _Further information about these items can be found in the Usage 
@@ -127,7 +127,7 @@ generate a tooltip.
 
 ### Mixins
 
-#### `Tooltip`
+#### `TwbsTooltip`
 
 Check out the [Bootstrap Tooltip Options documentation](http://getbootstrap.com/javascript/#tooltips-options)
 as all have been exposed in this mixin, with the following cavaets:
@@ -135,7 +135,7 @@ as all have been exposed in this mixin, with the following cavaets:
 * The boolean options have been renamed to include
 a question mark; e.g. `animation` is `animation?` and `html` is 
 `html?`.
-* For simplicity sake, the `delay` option has been turned into two
+* For conveneince, the `delay` option has been enhanced to accept two
 arguments: `delayHide` and `delayShow`.
 * `title` is changed to `defaultTitle` because
 `title` is already used for the actual tooltip.

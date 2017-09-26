@@ -1,30 +1,226 @@
-<section class="container">
-  <h1>Demonstration</h1>
+<section>
+  <div class="container">
+    <div class="alert alert-info">
+      <p><strong>All Components Extend <code>\{{twbs-span}}</code></strong></p>
+      <p>
+        All of the components extend the <code>twbs-span</code> component. This means that they all accept the
+        same arguments and nested components. Check out the demonstrations below.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ----------------------------------------------------------------------------------------------------- twbs-abbr -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-abbr}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF\{{/twbs-abbr}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-abbr placement="right" as |abbr|}}
+          {{#abbr.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/abbr.title}}
+          H:m:s
+        {{/twbs-abbr}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-abbr placement="right" as |abbr|}}
+  \{{#abbr.title}}\{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}\{{/abbr.title}}
+  H:m:s
+\{{/twbs-abbr}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- --------------------------------------------------------------------------------------------------- twbs-button -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-button}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-button
+          class="btn-default" html?=true placement="right"
+          title="A Bootstrap3 button with class <code>btn-default</code>"}}
+          Default Button
+        {{/twbs-button}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-button
+  class="btn-default" html?=true placement="right"
+  title="A Bootstrap3 button with class &lt;code&gt;btn-default&lt;/code&gt;"}}
+  Default Button
+\{{/twbs-button}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="container">
-  <h2><code>twbs-abbr</code></h2>
-  <ul class="list-unstyled">
-    <li>{{#twbs-abbr title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - basic</li>
-    <li>{{#twbs-abbr annimation?=false title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - no animation</li>
-    <li>{{#twbs-abbr delayShow=2000 title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - show-delay of 2000ms</li>
-    <li>{{#twbs-abbr html?=true title="Best Friends, <strong>Forever</strong>"}}
-      BFF{{/twbs-abbr}} - rendered with some html markup
-    </li>
-    <li>{{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF{{/twbs-abbr}} - placement on the right</li>
-  </ul>
+<!-- ----------------------------------------------------------------------------------------------------- twbs-cite -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-cite}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <blockquote>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+          </p>
+          <footer>
+            Someone famous in {{#twbs-cite title="Source Title"}}Source Title{{/twbs-cite}}
+          </footer>
+        </blockquote>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>&lt;blockquote&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+  &lt;/p&gt;
+  &lt;footer&gt;
+    Someone famous in \{{#twbs-cite title="Source Title"}}Source Title\{{/twbs-cite}}
+  &lt;/footer&gt;
+&lt;/blockquote&gt;
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="container">
-  <h2><code>twbs-cite</code></h2>
-  <blockquote>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer>Someone famous in {{#twbs-cite title="Source Title"}}Source Title{{/twbs-cite}}</footer>
-  </blockquote>
+<!-- -------------------------------------------------------------------------------------------------------- twbs-i -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-i}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{twbs-i class="fa fa-github" html?=true placement="right" title="Github Icon:<br/><code>fa fa-github</code>"}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{twbs-i class="fa fa-github"
+  html?=true placement="right"
+  title="Github Icon:&lt;br/&gt;&lt;code&gt;fa fa-github&lt;/code&gt;"}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
+          {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
+        {{/twbs-i}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
+  \{{#i.title}}\{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}\{{/i.title}}
+\{{/twbs-i}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="container">
-  <h2><code>twbs-span</code></h2>
-  {{#twbs-span title="Some sort of span title"}}
-    Hover over this span to checkout the default Bootstrap tooltip.{{/twbs-span}}
+<!-- ----------------------------------------------------------------------------------------------------- twbs-span -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-span}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-span placement="bottom" title="Some sort of span title"}}
+          Hover over this span to checkout the default Bootstrap tooltip.
+        {{/twbs-span}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-span placement="bottom" title="Some sort of span title"}}
+  Hover over this span to checkout the default Bootstrap tooltip.
+\{{/twbs-span}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-span placement="right" as |span|}}
+          Hover For Dynamic Content
+          {{#span.title}}
+            {{clock.hour}}:{{clock.minute}}:{{clock.second}}
+          {{/span.title}}
+        {{/twbs-span}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-span placement="right" as |span|}}
+  Hover For Dynamic Content
+  \{{#span.title}}
+    \{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}
+  \{{/span.title}}
+\{{/twbs-span}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------------------------------------------------- twbs-time -->
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>\{{twbs-time}}</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-time
+          datetime=model.timeDemoISOString html?=true placement="bottom"
+          title=(
+            concat "The <code>datetime</code> attribute of this <code>time</code> element is set to "
+            model.timeDemoISOString
+          )
+        }}
+          {{model.timeDemoString}}
+        {{/twbs-time}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-time
+  datetime=model.timeDemoISOString html?=true placement="bottom"
+  title=(
+    concat "The <code>datetime</code> attribute of this <code>time</code> element is set to "
+    model.timeDemoISOString
+  )
+}}
+  \{{model.timeDemoString}}
+\{{/twbs-time}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
 </section>

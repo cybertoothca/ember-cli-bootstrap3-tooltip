@@ -1,12 +1,10 @@
-import Ember from 'ember';
-import layout from '../templates/components/twbs-cite';
-import Tooltip from '../mixins/tooltip';
+import TwbsSpan from './twbs-span';
 
-export default Ember.Component.extend(Tooltip, {
+export default TwbsSpan.extend({
   classNames: ['twbs-cite'],
-  layout,
   /**
-   * This is a `span` tag.
+   * This is a `cite` tag.
    */
-  tagName: 'cite'
+  tagName: 'cite',
+  twbsSpan: false // turns of the style class `twbs-span` inherited from the `twbs-span` component.
 });

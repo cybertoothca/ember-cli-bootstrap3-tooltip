@@ -25,20 +25,26 @@ export default Ember.Mixin.create({
    */
   defaultTitle: '',
   /**
+   * Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type.
+   *
+   * If a number is supplied, delay is applied to both hide/show.
+   *
+   * Object structure is: `delay: { "show": 500, "hide": 100 }`.
+   */
+  delay: 0,
+  /**
    * Delay hiding the tooltip (ms) - does not apply to manual trigger type.
    */
-  delayHide: 0,
+  delayHide: undefined,
   /**
    * Delay showing the tooltip (ms) - does not apply to manual trigger type.
    */
-  delayShow: 0,
+  delayShow: undefined,
   /**
-   * Read-only access to the html? flag.
+   * Insert HTML into the tooltip. If false, jQuery's text method will be used to insert content into
+   * the DOM. Use text if you're worried about XSS attacks.
    */
-  html: Ember.computed.readOnly('html?'),
-  /**
-   * Insert HTML into the tooltip.
-   */
+  html: Ember.computed.alias('html?'),
   'html?': false,
   /**
    * How to position the tooltip - top | bottom | left | right | auto.
@@ -51,7 +57,7 @@ export default Ember.Mixin.create({
    */
   placement: 'top',
   /**
-   * f a selector is provided, tooltip objects will be delegated to the specified targets. In practice,
+   * If a selector is provided, tooltip objects will be delegated to the specified targets. In practice,
    * this is used to enable dynamic HTML content to have tooltips added. See
    * this (https://github.com/twbs/bootstrap/issues/4215) and an
    * informative example (http://jsbin.com/zopod/1/edit).
@@ -87,6 +93,41 @@ export default Ember.Mixin.create({
    * this context is set to the tooltip instance.
    */
   viewport: {selector: 'body', padding: 0},
+  /**
+   * Return a hash of all the options that can easily be passed into the popover initialization.
+   * @returns {*|Object}
+   */
+  getOptions() {
+    const hash =
+      this.getProperties('animation', 'content', 'html', 'placement', 'selector', 'title');
+    hash.container = this.get('popoverContainer');
+    hash.delay = this.get('_delayComputed');
+    hash.template = this.get('popoverTemplate');
+    hash.trigger = this.get('popoverTrigger');
+    return hash;
+  },
+  /**
+   * If a number is supplied, delay is applied to both hide/show.
+   *
+   * Object structure is: `delay: { "show": 500, "hide": 100 }`.
+   * @private
+   */
+  _delayComputed: Ember.computed('delay', 'delayHide', 'delayShow', function () {
+    const delayObject = {
+      hide: this.get('delay'),
+      show: this.get('delay')
+    };
+
+    if (Ember.isPresent(this.get('delayHide'))) {
+      Ember.set(delayObject, 'hide', this.get('delayHide'));
+    }
+
+    if (Ember.isPresent(this.get('delayShow'))) {
+      Ember.set(delayObject, 'show', this.get('delayShow'));
+    }
+
+    return delayObject;
+  }),
   /**
    * Destroy the bootstrap tooltip when the component is being destroyed.
    * @private

@@ -1,10 +1,11 @@
 import TwbsSpan from './twbs-span';
 
 export default TwbsSpan.extend({
-  classNames: ['twbs-abbr'],
+  attributeBindings: ['datetime'],
+  classNames: ['twbs-time'],
   /**
-   * This is a `abbr` tag.
+   * This is a `time` tag.
    */
-  tagName: 'abbr',
+  tagName: 'time',
   twbsSpan: false // turns of the style class `twbs-span` inherited from the `twbs-span` component.
 });
