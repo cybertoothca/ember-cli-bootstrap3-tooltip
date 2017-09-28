@@ -9,7 +9,9 @@
     </div>
   </div>
 </section>
+
 <!-- ----------------------------------------------------------------------------------------------------- twbs-abbr -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -45,7 +47,9 @@
     </div>
   </div>
 </section>
+
 <!-- --------------------------------------------------------------------------------------------------- twbs-button -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -63,8 +67,30 @@
         {{!-- @formatter:off --}}
 <pre>\{{#twbs-button
   class="btn-default" html?=true placement="right"
-  title="A Bootstrap3 button with class &lt;code&gt;btn-default&lt;/code&gt;"}}
+  title="A Bootstrap3 button with class &lt;code>btn-default&lt;/code>"}}
   Default Button
+\{{/twbs-button}}
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-button
+          class="btn-info" placement="right"
+          title="Click again to dismiss."
+          tooltipTrigger="click"}}
+          Click To Show Tooltip
+        {{/twbs-button}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-button
+  class="btn-default" placement="right"
+  title="Click again to dismiss."
+  tooltipTrigger="click"
+}}
+  Click To Show Tooltip
 \{{/twbs-button}}
 </pre>
         {{!-- @formatter:on --}}
@@ -74,6 +100,7 @@
 </section>
 
 <!-- ----------------------------------------------------------------------------------------------------- twbs-cite -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -92,14 +119,14 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>&lt;blockquote&gt;
-  &lt;p&gt;
+<pre>&lt;blockquote>
+  &lt;p>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-  &lt;/p&gt;
-  &lt;footer&gt;
+  &lt;/p>
+  &lt;footer>
     Someone famous in \{{#twbs-cite title="Source Title"}}Source Title\{{/twbs-cite}}
-  &lt;/footer&gt;
-&lt;/blockquote&gt;
+  &lt;/footer>
+&lt;/blockquote>
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -108,6 +135,7 @@
 </section>
 
 <!-- -------------------------------------------------------------------------------------------------------- twbs-i -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -121,7 +149,7 @@
         {{!-- @formatter:off --}}
 <pre>\{{twbs-i class="fa fa-github"
   html?=true placement="right"
-  title="Github Icon:&lt;br/&gt;&lt;code&gt;fa fa-github&lt;/code&gt;"}}
+  title="Github Icon:&lt;br/>&lt;code>fa fa-github&lt;/code>"}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -145,6 +173,7 @@
 </section>
 
 <!-- ----------------------------------------------------------------------------------------------------- twbs-span -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -190,6 +219,7 @@
 </section>
 
 <!-- ----------------------------------------------------------------------------------------------------- twbs-time -->
+
 <section>
   <div class="container">
     <div class="page-header">
@@ -224,3 +254,320 @@
     </div>
   </div>
 </section>
+
+<!-- -------------------------------------------------------------------------------------------- Triggering Methods -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2>Triggering Methods</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-span
+          tooltipTrigger="manual"
+          title="Manual triggering of the tooltip." as |span hide show toggle|}}
+          The text for this tooltip is triggered by the events listed below.
+          <br/>
+          <a {{action show}} href="#">Show</a>
+          |
+          <a {{action hide}} href="#">Hide</a>
+          |
+          <a {{action toggle}} href="#">Toggle</a>
+        {{/twbs-span}}
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+ <pre>\{{#twbs-span
+  tooltipTrigger="manual"
+  title="Manual triggering of the tooltip." as |span hide show toggle|
+}}
+  The text for this tooltip is triggered by the events listed below.
+  &lt;br/>
+  &lt;a \{{action show}} href="#">Show&lt;/a>
+  |
+  &lt;a \{{action hide}} href="#">Hide&lt;/a>
+  |
+  &lt;a \{{action toggle}} href="#">Toggle&lt;/a>
+\{{/twbs-span}}
+</pre>
+       {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="alert alert-info">
+      <p><strong>Some Things To Understand About Triggering Tooltip Methods</strong></p>
+      <ul>
+        <li>
+          You must supply these actions <code>as</code> arguments to your component in
+          the exact order of <code>hide</code>, <code>show</code>, and <code>toggle</code>.
+        </li>
+        <li>
+          Feel free to pass the these actions to other actions as arguments and invoke them accordingly.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ----------------------------------------------------------------------------------------------- Handling Events -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2>Handling Events</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        {{#twbs-span
+          onHide=(action "fireEvent" "#js-hide")
+          onHidden=(action "fireEvent" "#js-hidden")
+          onInserted=(action "fireEvent" "#js-inserted")
+          onShow=(action "fireEvent" "#js-show")
+          onShown=(action "fireEvent" "#js-shown")
+          title="As events fire their corresponding label will color green-orange-red."}}
+          Hover over this for a demonstration of the tooltip events firing.
+        {{/twbs-span}}
+        <p>
+          <span class="label label-default" id="js-inserted">Inserted</span>
+          <span class="label label-default" id="js-show">Show</span>
+          <span class="label label-default" id="js-shown">Shown</span>
+          <span class="label label-default" id="js-hide">Hide</span>
+          <span class="label label-default" id="js-hidden">Hidden</span>
+        </p>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>\{{#twbs-span
+  onHide=(action "fireEvent" "#js-hide")
+  onHidden=(action "fireEvent" "#js-hidden")
+  onInserted=(action "fireEvent" "#js-inserted")
+  onShow=(action "fireEvent" "#js-show")
+  onShown=(action "fireEvent" "#js-shown")
+  title="Watch all the events."}}
+  Hover over this for a demonstration of the tooltip events firing.
+\{{/twbs-span}}
+&lt;p>
+  &lt;span class="label label-default" id="js-inserted">Inserted&lt;/span>
+  &lt;span class="label label-default" id="js-show">Show&lt;/span>
+  &lt;span class="label label-default" id="js-shown">Shown&lt;/span>
+  &lt;span class="label label-default" id="js-hide">Hide&lt;/span>
+  &lt;span class="label label-default" id="js-hidden">Hidden&lt;/span>
+&lt;/p>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+    <div class="alert alert-info">
+      <p><strong>Some Things To Understand About Tooltip Events</strong></p>
+      <ul>
+        <li>
+          You can supply actions to the <code>onHide</code>, <code>onHidden</code>,
+          <code>onInserted</code>, <code>onShow</code>, and <code>onShown</code> attributes of
+          your component.
+        </li>
+        <li>
+          Each one of the actions you specify will be default come with two arguments; the first
+          is the JQuery wrapped element and the second the reference to the component itself. If
+          you send any extra arguments to your action they will come before the element and
+          component arguments.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------------------------------------------- Other Options -->
+
+<!-- ---------------------------------------------------------------------------------------------------- animation? -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>animation?=[true|false]</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <p>
+          {{#twbs-span animation?=true placement="right" title="Animation is on."}}
+            animation?=true
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-span animation?=false placement="right" title="Animation is OFF."}}
+            animation?=false
+          {{/twbs-span}}
+        </p>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------------------------------------------------- delay -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>delay=[number|Object]</code>, <code>delayHide=[number]</code>, <code>delayShow=[number]</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <p>
+          {{#twbs-span delay=1500 placement="right" title="This tooltip delays on both hide and show."}}
+            <code>delay=1500</code>
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-span delayHide=1500 placement="right" title="This tooltip will delay when hiding."}}
+            <code>delayHide=1500</code>
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-span delayShow=1500 placement="right" title="Delayed showing you this tooltip."}}
+            <code>delayShow=1500</code>
+          {{/twbs-span}}
+        </p>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------------------------------------------------- delay -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>html?=[true|false]</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <p>
+          {{#twbs-span html?=true placement="right" title="<strong>HTML</strong> is bold."}}
+            <code>html?=true</code>
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-span html?=false placement="right" title="<strong>HTML</strong> is obviously not enabled."}}
+            <code>html?=false</code>
+          {{/twbs-span}}
+        </p>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------------------------------------------------- delay -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>placement=["bottom"|"left"|"right"|"top"]</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <p>
+              {{#twbs-span placement="bottom" title="BOTTOM"}}
+                <code>placement="bottom"</code>
+              {{/twbs-span}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <p>
+              {{#twbs-span placement="right" title="RIGHT"}}
+                <code>placement="right"</code>
+              {{/twbs-span}}
+            </p>
+          </div>
+          <div class="col-xs-5 col-xs-offset-2">
+            <p>
+              {{#twbs-span placement="left" title="LEFT"}}
+                <code>placement="left"</code>
+              {{/twbs-span}}
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <p>
+              {{#twbs-span placement="top" title="TOP"}}
+                <code>placement="top"</code>
+              {{/twbs-span}}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ------------------------------------------------------------------------------------------------------ triggers -->
+
+<section>
+  <div class="container">
+    <div class="page-header">
+      <h2><code>trigger=["click"|"focus"|"hover"|"manual"]</code></h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+        <p>
+          {{#twbs-span placement="right" tooltipTrigger="click" title="Click again to hide."}}
+            <code>tooltipTrigger="click"</code>
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-button
+            class="btn-default" placement="right" tooltipTrigger="focus" title="Leave button focus to hide."}}
+            tooltipTrigger="focus"
+          {{/twbs-button}}
+        </p>
+        <p>
+          {{#twbs-span placement="right" tooltipTrigger="hover" title="Mouse out to hide."}}
+            <code>tooltipTrigger="hover"</code>
+          {{/twbs-span}}
+        </p>
+        <p>
+          {{#twbs-span
+            placement="right" tooltipTrigger="manual" title="Click again to hide." as |span hide show toggle|
+          }}
+            <code {{action toggle}}>tooltipTrigger="manual"</code>
+          {{/twbs-span}}
+        </p>
+      </div>
+      <div class="col-sm-8">
+        {{!-- @formatter:off --}}
+<pre>
+</pre>
+        {{!-- @formatter:on --}}
+      </div>
+    </div>
+  </div>
+</section>
+

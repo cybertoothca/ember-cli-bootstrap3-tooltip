@@ -5,6 +5,29 @@ import Ember from 'ember';
  * @see http://getbootstrap.com/javascript/#tooltips-options
  */
 export default Ember.Mixin.create({
+  actions: {
+    /**
+     * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
+     */
+    hide() {
+      this.$().tooltip('hide');
+    },
+    onHide() {
+
+    },
+    /**
+     * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
+     */
+    show() {
+      this.$().tooltip('show');
+    },
+    /**
+     * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
+     */
+    toggle() {
+      this.$().tooltip('toggle');
+    },
+  },
   /**
    * Read-only access to the animation? flag.
    */
@@ -46,6 +69,48 @@ export default Ember.Mixin.create({
    */
   html: Ember.computed.alias('html?'),
   'html?': false,
+  /**
+   * Supply an action that will be fired during the tooltip's hide event.
+   * Your action will be passed the JQuery wrapped tooltip element and this component.
+   *
+   * From the bootstrap documentation (https://getbootstrap.com/docs/3.3/javascript/#tooltips-events):
+   * This event is fired immediately when the hide instance method has been called.
+   */
+  onHide: undefined,
+  /**
+   * Supply an action that will be fired during the tooltip's hidden event.
+   * Your action will be passed the JQuery wrapped tooltip element and this component.
+   *
+   * From the bootstrap documentation (https://getbootstrap.com/docs/3.3/javascript/#tooltips-events):
+   * This event is fired when the tooltip has finished being hidden from the user (will wait for CSS
+   * transitions to complete).
+   */
+  onHidden: undefined,
+  /**
+   * Supply an action that will be fired during the tooltip's inserted event.
+   * Your action will be passed the JQuery wrapped tooltip element and this component.
+   *
+   * From the bootstrap documentation (https://getbootstrap.com/docs/3.3/javascript/#tooltips-events):
+   * This event is fired after the show.bs.tooltip event when the tooltip template has been added to the DOM.
+   */
+  onInserted: undefined,
+  /**
+   * Supply an action that will be fired during the tooltip's show event.
+   * Your action will be passed the JQuery wrapped tooltip element and this component.
+   *
+   * From the bootstrap documentation (https://getbootstrap.com/docs/3.3/javascript/#tooltips-events):
+   * This event fires immediately when the show instance method is called.
+   */
+  onShow: undefined,
+  /**
+   * Supply an action that will be fired during the tooltip's shown event.
+   * Your action will be passed the JQuery wrapped tooltip element and this component.
+   *
+   * From the bootstrap documentation (https://getbootstrap.com/docs/3.3/javascript/#tooltips-events):
+   * This event is fired when the tooltip has been made visible to the user (will wait for CSS transitions
+   * to complete).
+   */
+  onShown: undefined,
   /**
    * How to position the tooltip - top | bottom | left | right | auto.
    *
@@ -94,16 +159,16 @@ export default Ember.Mixin.create({
    */
   viewport: {selector: 'body', padding: 0},
   /**
-   * Return a hash of all the options that can easily be passed into the popover initialization.
+   * Return a hash of all the options that can easily be passed into the tooltip initialization.
    * @returns {*|Object}
    */
   getOptions() {
     const hash =
-      this.getProperties('animation', 'content', 'html', 'placement', 'selector', 'title');
-    hash.container = this.get('popoverContainer');
+      this.getProperties('animation', 'html', 'placement', 'selector', 'template', 'viewport');
+    hash.container = this.get('tooltipContainer');
     hash.delay = this.get('_delayComputed');
-    hash.template = this.get('popoverTemplate');
-    hash.trigger = this.get('popoverTrigger');
+    hash.trigger = this.get('tooltipTrigger');
+    hash.title = this.get('defaultTitle');
     return hash;
   },
   /**
@@ -142,12 +207,33 @@ export default Ember.Mixin.create({
    * @private
    */
   _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
-    const options = this.getProperties(
-      'animation', 'html', 'placement', 'selector', 'template', 'viewport');
-    options.container = this.get('tooltipContainer');
-    options.delay = {show: this.get('delayShow'), hide: this.get('delayHide')};
-    options.trigger = this.get('tooltipTrigger');
-    options.title = this.get('defaultTitle');
-    this.$().tooltip(options);
+    // Ember.Logger.info(this.get('actions').onHide);
+    this.$()
+      .tooltip(this.getOptions())
+      .on('hide.bs.tooltip', () => {
+        if (Ember.isPresent(this.get('onHide'))) {
+          this.get('onHide')(this.$(), this);
+        }
+      })
+      .on('hidden.bs.tooltip', () => {
+        if (Ember.isPresent(this.get('onHide'))) {
+          this.get('onHidden')(this.$(), this);
+        }
+      })
+      .on('inserted.bs.tooltip', () => {
+        if (Ember.isPresent(this.get('onHide'))) {
+          this.get('onInserted')(this.$(), this);
+        }
+      })
+      .on('show.bs.tooltip', () => {
+        if (Ember.isPresent(this.get('onHide'))) {
+          this.get('onShow')(this.$(), this);
+        }
+      })
+      .on('shown.bs.tooltip', () => {
+        if (Ember.isPresent(this.get('onHide'))) {
+          this.get('onShown')(this.$(), this);
+        }
+      })
   }))
 });
