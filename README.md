@@ -174,7 +174,7 @@ the nested title component on any one of the above `twbs-*` tags.
 Here's an example from the [demo site](http://ember-cli-bootstrap3-tooltip.cybertooth.io/) of a clock 
 icon with the current time changing in the tooltip:
 
-```js
+```hbs
 {{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
   {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
 {{/twbs-i}}
@@ -303,9 +303,12 @@ Confirm your changes are showing up in our S3 container: http://ember-cli-bootst
 
 # Releasing & Publishing To NPM
 
+The steps are listed below; roll the version, push the changes to Git, publish to NPM, and update the demo website.
+
 ```
 npm version x.y.z-sub.#
 git push
 git push --tags
 npm publish
+ember deploy production
 ```
