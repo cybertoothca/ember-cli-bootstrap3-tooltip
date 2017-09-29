@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ember install ember-cli-app-version
 ember install ember-cli-bootstrap3-sass
 ember install ember-cli-deploy
 ember install ember-cli-deploy-build
