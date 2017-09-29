@@ -12,9 +12,6 @@ export default Ember.Mixin.create({
     hide() {
       this.$().tooltip('hide');
     },
-    onHide() {
-
-    },
     /**
      * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
      */
@@ -207,7 +204,6 @@ export default Ember.Mixin.create({
    * @private
    */
   _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
-    // Ember.Logger.info(this.get('actions').onHide);
     this.$()
       .tooltip(this.getOptions())
       .on('hide.bs.tooltip', () => {
@@ -216,22 +212,22 @@ export default Ember.Mixin.create({
         }
       })
       .on('hidden.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHide'))) {
+        if (Ember.isPresent(this.get('onHidden'))) {
           this.get('onHidden')(this.$(), this);
         }
       })
       .on('inserted.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHide'))) {
+        if (Ember.isPresent(this.get('onInserted'))) {
           this.get('onInserted')(this.$(), this);
         }
       })
       .on('show.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHide'))) {
+        if (Ember.isPresent(this.get('onShow'))) {
           this.get('onShow')(this.$(), this);
         }
       })
       .on('shown.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHide'))) {
+        if (Ember.isPresent(this.get('onShown'))) {
           this.get('onShown')(this.$(), this);
         }
       })
