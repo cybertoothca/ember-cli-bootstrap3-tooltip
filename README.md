@@ -1,4 +1,4 @@
-# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip) ![](http://embadge.io/v1/badge.svg?start=1.13.0)
+# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip) ![](http://embadge.io/v1/badge.svg?start=2.3.0)
 
 [![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
 
@@ -25,13 +25,19 @@ This addon supplied the following _components_:
 
 * `twbs-abbr` - an `<abbr>` element whose title attribute is rendered
 as a Bootstrap tooltip.
+* `twbs-button` - a `<button>` element whose title attribute is rendered
+as a Bootstrap tooltip.  Accepts all standard HTML5 attributes.
 * `twbs-cite` - a `<cite>` element whose title attribute is rendered
+as a Bootstrap tooltip.
+* `twbs-i` - an `<i>` element whose title attribute is rendered
 as a Bootstrap tooltip.
 * `twbs-span` - a `<span>` element whose title attribute is rendered
 as a Bootstrap tooltip.  This is very convenient when you want to embed
 a tooltip into `<a>`nchor or `<button>` elements.
+* `twbs-time` - a `<time>` element whose title attribute is rendered
+as a Bootstrap tooltip.  Accepts the HTML5 `datetime` attribute.
 
-...and the following _mixins_:
+...and the following _mixin_:
 
 *  `TwbsTooltip` - imported as 
 `import TwbsTooltip as 'ember-cli-bootstrap3-tooltip/mixins/twbs-tooltip'` and
@@ -42,7 +48,9 @@ section below._
 
 ## Requirements
 
-* Ember >= 1.13.0
+* **Ember >= 2.3.0**: This addon uses the 
+[hash helper](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) which was 
+introduced in Ember-2.3.0.
 * Ember CLI
 * You must have Bootstrap 3.x installed in your Ember application.  Feel free to use the
   [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
@@ -57,7 +65,7 @@ The following will install this addon:
 ember install ember-cli-bootstrap3-tooltip
 ```
 
-__As mentioned, you must install Bootstrap3 along with the tooltip plugin.  See the requirements section above.__
+__As mentioned, you must install Bootstrap3's tooltip styles and script plugin.  See the requirements section above.__
 
 ### Upgrading
 
@@ -76,17 +84,29 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes (e.g. `initialism`)
-* Also see the Tooltip mixin description below
+* `class` - any additional CSS classes (e.g. `initialism`)
 
 ##### Examples
 
-    {{#twbs-abbr title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr annimation?=false title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr delay=500 title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr html?=true title="Best Friends, <strong>Forever</strong>"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-button class="btn-default title="Some tooltip value"}}`
+
+Create a `<button>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* _All HTML5 [button](https://www.w3schools.com/TAgs/tag_button.asp) attributes._
+* `title` - the tooltip String.
+* `class` - any additional CSS classes (e.g. `btn-default`)
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
 
 #### `{{twbs-cite title="Some tooltip value"}}`
 
@@ -95,16 +115,27 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes.
-* Also see the Tooltip mixin description below.
 
 ##### Examples
 
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in {{#twbs-cite title="Source Title"}}Source Title{{/twbs-cite}}</footer>
-    </blockquote>
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-i title="Some tooltip value"}}`
+
+Create an `<i>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* `title` - the tooltip String.
+* `class` - any additional CSS classes (e.g. `fa fa-clock`)
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
 
 #### `{{twbs-span title="Some tooltip value"}}`
 
@@ -113,17 +144,41 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes.
-* Also see the Tooltip mixin description below.
 
 ##### Examples
 
-    {{#twbs-span title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span annimation?=false title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span delay=500 title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span html?=true title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span placement="right" title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-time datetime="2001-09-11T04:00:00.000Z" title="Some tooltip value"}}`
+
+Create an `<time>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* _All HTML5 [time](https://www.w3schools.com/TAgs/tag_time.asp) attributes._
+* `title` - the tooltip String.
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `title` Component
+
+When you have a tooltip title that is another rendered component or some sort of dynamic content, use 
+the nested title component on any one of the above `twbs-*` tags.
+
+Here's an example from the [demo site](http://ember-cli-bootstrap3-tooltip.cybertooth.io/) of a clock 
+icon with the current time changing in the tooltip:
+
+```js
+{{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
+  {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
+{{/twbs-i}}
+```
 
 ### Mixins
 
@@ -145,12 +200,12 @@ Ember.
 
 ##### Properties
 
-* `animation` - Alias to `animation?`.
+* `animation` - Readonly alias to `animation?`.
 * `animation?` - Apply a CSS fade transition to the tooltip (`boolean` defaults to `true`)
 * `defaultTitle` - Default title value if title attribute isn't present.  If a function is given, it will be called with its this reference set to the element that the tooltip is attached to.  (`String` defaults to ''; or a function)
 * `delayHide` - Delay hiding the tooltip (ms) - does not apply to manual trigger type (`number` defaults to 0)
 * `delayShow` - Delay showing the tooltip (ms) - does not apply to manual trigger type (`number` defaults to 0)
-* `html` - Alias to `html?`.
+* `html` - Readonly alias to `html?`.
 * `html?` - Insert HTML into the tooltip. If false, jQuery's text method will be used to insert content into the DOM. Use text if you're worried about XSS attacks. (`boolean` defaults to `false`)
 * `placement` - How to position the tooltip: `top` | `bottom` | `left` | `right` | `auto`.  When `auto` is specified, it will dynamically reorient the tooltip. For example, if placement is `auto left`, the tooltip will display to the left when possible, otherwise it will display right.  When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The this context is set to the tooltip instance. (`String` defaulting to `top`; or a function)
 * `selector` - If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have tooltips added. See [this](https://github.com/twbs/bootstrap/issues/4215) and an [informative example](http://jsbin.com/zopod/1/edit). (`String` defaults to `false`)
@@ -161,11 +216,8 @@ Ember.
 
 ### Troubleshooting And Tips
 
-1. If you have a title that is dynamic, maybe it includes the current 
-time, you will want to bind a function to 
-the mixin's `defaultTitle` property and __NOT__ specify a `title`
-argument.
-1. Bootstrap3 CSS and the tooltip Javascript plugin must be installed.
+1. If you have a title that is dynamic use the nested title component.
+1. Make sure the Bootstrap3 CSS and the tooltip Javascript plugin is installed.
 
 ---
 

@@ -175,18 +175,11 @@ export default Ember.Mixin.create({
    * @private
    */
   _delayComputed: Ember.computed('delay', 'delayHide', 'delayShow', function () {
-    const delayObject = {
-      hide: this.get('delay'),
-      show: this.get('delay')
-    };
+    const delayObject = {};
+    const delay = this.get('delay');
 
-    if (Ember.isPresent(this.get('delayHide'))) {
-      Ember.set(delayObject, 'hide', this.get('delayHide'));
-    }
-
-    if (Ember.isPresent(this.get('delayShow'))) {
-      Ember.set(delayObject, 'show', this.get('delayShow'));
-    }
+    Ember.set(delayObject, 'hide', Ember.getWithDefault(this, 'delayHide', delay));
+    Ember.set(delayObject, 'show', Ember.getWithDefault(this, 'delayShow', delay));
 
     return delayObject;
   }),

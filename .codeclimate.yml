@@ -16,6 +16,8 @@ engines:
     enabled: true
   fixme:
     enabled: true
+  watson:
+    enabled: true
 ratings:
   paths:
   - "**.inc"
