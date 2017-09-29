@@ -400,7 +400,13 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>
+<pre>\{{#twbs-span animation?=true placement="right" title="Animation is on."}}
+  animation?=true
+\{{/twbs-span}}
+
+\{{#twbs-span animation?=false placement="right" title="Animation is OFF."}}
+  animation?=false
+\{{/twbs-span}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -435,7 +441,26 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>
+<pre>\{{#twbs-span
+  delay=1500
+  placement="right"
+  title="This tooltip delays on both hide and show."}}
+  &lt;code>delay=1500&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span
+  delayHide=1500
+  placement="right"
+  title="This tooltip will delay when hiding."}}
+  &lt;code>delayHide=1500&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span
+  delayShow=1500
+  placement="right"
+  title="Delayed showing you this tooltip."}}
+  &lt;code>delayShow=1500&lt;/code>
+\{{/twbs-span}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -443,7 +468,7 @@
   </div>
 </section>
 
-<!-- --------------------------------------------------------------------------------------------------------- delay -->
+<!-- --------------------------------------------------------------------------------------------------------- html? -->
 
 <section>
   <div class="container">
@@ -465,7 +490,19 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>
+<pre>\{{#twbs-span
+  html?=true
+  placement="right"
+  title="&lt;strong>HTML&lt;/strong> is bold."}}
+  &lt;code>html?=true&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span
+  html?=false
+  placement="right"
+  title="&lt;strong>HTML&lt;/strong> is obviously not enabled."}}
+  &lt;code>html?=false&lt;/code>
+\{{/twbs-span}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -473,7 +510,7 @@
   </div>
 </section>
 
-<!-- --------------------------------------------------------------------------------------------------------- delay -->
+<!-- ----------------------------------------------------------------------------------------------------- placement -->
 
 <section>
   <div class="container">
@@ -519,7 +556,21 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>
+<pre>\{{#twbs-span placement="bottom" title="BOTTOM"}}
+  &lt;code>placement="bottom"&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span placement="right" title="RIGHT"}}
+  &lt;code>placement="right"&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span placement="left" title="LEFT"}}
+  &lt;code>placement="left"&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span placement="top" title="TOP"}}
+  &lt;code>placement="top"&lt;/code>
+\{{/twbs-span}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
@@ -563,7 +614,35 @@
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
-<pre>
+<pre>\{{#twbs-span
+  placement="right"
+  tooltipTrigger="click"
+  title="Click again to hide."}}
+  &lt;code>tooltipTrigger="click"&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-button
+  class="btn-default"
+  placement="right"
+  tooltipTrigger="focus"
+  title="Leave button focus to hide."}}
+  tooltipTrigger="focus"
+\{{/twbs-button}}
+
+\{{#twbs-span
+  placement="right"
+  tooltipTrigger="hover"
+  title="Mouse out to hide."}}
+  &lt;code>tooltipTrigger="hover"&lt;/code>
+\{{/twbs-span}}
+
+\{{#twbs-span
+  placement="right"
+  tooltipTrigger="manual"
+  title="Click again to hide." as |span hide show toggle|
+}}
+  &lt;code \{{action toggle}}>tooltipTrigger="manual"&lt;/code>
+\{{/twbs-span}}
 </pre>
         {{!-- @formatter:on --}}
       </div>
