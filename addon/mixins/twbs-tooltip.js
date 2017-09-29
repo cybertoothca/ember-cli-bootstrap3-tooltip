@@ -197,32 +197,19 @@ export default Ember.Mixin.create({
    * @private
    */
   _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
-    this.$()
-      .tooltip(this.getOptions())
-      .on('hide.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHide'))) {
-          this.get('onHide')(this.$(), this);
+    const $tooltip = this.$().tooltip(this.getOptions());
+    Ember.A().pushObjects([
+      {twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide')},
+      {twbsEvent: 'hidden.bs.tooltip', handler: this.get('onHidden')},
+      {twbsEvent: 'inserted.bs.tooltip', handler: this.get('onInserted')},
+      {twbsEvent: 'show.bs.tooltip', handler: this.get('onShow')},
+      {twbsEvent: 'shown.bs.tooltip', handler: this.get('onShown')}
+    ]).forEach((event) => {
+      $tooltip.on(event.twbsEvent, () => {
+        if (Ember.isPresent(event.handler)) {
+          event.handler(this.$(), this);
         }
       })
-      .on('hidden.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onHidden'))) {
-          this.get('onHidden')(this.$(), this);
-        }
-      })
-      .on('inserted.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onInserted'))) {
-          this.get('onInserted')(this.$(), this);
-        }
-      })
-      .on('show.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onShow'))) {
-          this.get('onShow')(this.$(), this);
-        }
-      })
-      .on('shown.bs.tooltip', () => {
-        if (Ember.isPresent(this.get('onShown'))) {
-          this.get('onShown')(this.$(), this);
-        }
-      })
+    })
   }))
 });
