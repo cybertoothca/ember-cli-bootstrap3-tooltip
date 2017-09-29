@@ -17,7 +17,7 @@ engines:
   fixme:
     enabled: true
   watson:
-    enabled: true
+    enabled: false  # erroring with this addon
 ratings:
   paths:
   - "**.inc"
