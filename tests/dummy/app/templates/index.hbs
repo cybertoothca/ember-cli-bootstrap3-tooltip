@@ -26,5 +26,26 @@
 <section class="container">
   <h2><code>twbs-span</code></h2>
   {{#twbs-span title="Some sort of span title"}}
-    Hover over this span to checkout the default Bootstrap tooltip.{{/twbs-span}}
+    HOVER OVER this span to checkout the default Bootstrap tooltip.{{/twbs-span}}
+</section>
+
+<section class="container">
+  <h2><code>twbs-span With Delay Show 2000ms</code></h2>
+  {{#twbs-span delayShow=2000 title="Some sort of span title"}}
+    HOVER OVER this span to checkout the default Bootstrap tooltip.
+  {{/twbs-span}}
+</section>
+
+<section class="container">
+  <h2><code>twbs-span With Delay Hide 2000ms</code></h2>
+  {{#twbs-span delayHide=2000 title="Some sort of span title"}}
+    HOVER OVER this span to checkout the default Bootstrap tooltip.
+  {{/twbs-span}}
+</section>
+
+<section class="container">
+  <h2><code>twbs-span With Delay Hide 2000ms & Click Trigger</code></h2>
+  {{#twbs-span delayHide=2000 tooltipTrigger="click" title="Some sort of span title"}}
+    CLICK this span to checkout the default Bootstrap tooltip.
+  {{/twbs-span}}
 </section>
