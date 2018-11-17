@@ -1,17 +1,23 @@
-# ember-cli-bootstrap3-tooltip [![GitHub version](https://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](https://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip)
+# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip) ![](http://embadge.io/v1/badge.svg?start=2.3.0)
 
-[![npm version](https://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](https://badge.fury.io/js/ember-cli-bootstrap3-tooltip) [![CircleCI](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip.svg?style=shield)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip) [![Code Climate](https://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](https://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip) ![Dependencies](https://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember-observer-badge](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](https://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
+[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
 
-This addon provides several components that will generate [Bootstrap
-Tooltips](http://getbootstrap.com/javascript/#tooltips) from the 
-given element's title attribute.  Also provided is a mixin that
-can be used to enable the Bootstrap Tooltip in your new or existing 
-components.
+This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](https://getbootstrap.com/docs/3.3/javascript/#tooltips).
 
-__You must have Bootstrap 3.x installed in your Ember application.__  
-Feel free to use the 
-[ember-cli-bootstrap3-sass](https://emberobserver.com/addons/ember-cli-bootstrap3-sass) 
-addon to setup Bootstrap if you haven't already done so.
+## Tested Against
+
+[![ember-lts-2.4](https://img.shields.io/badge/ember--try-ember--lts--2.4-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+[![ember-lts-2.8](https://img.shields.io/badge/ember--try-ember--lts--2.8-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+[![ember-lts-2.12](https://img.shields.io/badge/ember--try-ember--lts--2.12-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+
+[![ember-release](https://img.shields.io/badge/ember--try-ember--release-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+[![ember-beta](https://img.shields.io/badge/ember--try-ember--beta-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+[![ember-canary](https://img.shields.io/badge/ember--try-ember--canary-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
+
+## Demo
+
+The demonstration web application can be found here:
+[http://ember-cli-bootstrap3-tooltip.cybertooth.io/](http://ember-cli-bootstrap3-tooltip.cybertooth.io/). 
 
 ## What Does This Addon Do?
 
@@ -19,16 +25,22 @@ This addon supplied the following _components_:
 
 * `twbs-abbr` - an `<abbr>` element whose title attribute is rendered
 as a Bootstrap tooltip.
+* `twbs-button` - a `<button>` element whose title attribute is rendered
+as a Bootstrap tooltip.  Accepts all standard HTML5 attributes.
 * `twbs-cite` - a `<cite>` element whose title attribute is rendered
+as a Bootstrap tooltip.
+* `twbs-i` - an `<i>` element whose title attribute is rendered
 as a Bootstrap tooltip.
 * `twbs-span` - a `<span>` element whose title attribute is rendered
 as a Bootstrap tooltip.  This is very convenient when you want to embed
 a tooltip into `<a>`nchor or `<button>` elements.
+* `twbs-time` - a `<time>` element whose title attribute is rendered
+as a Bootstrap tooltip.  Accepts the HTML5 `datetime` attribute.
 
-...and the following _mixins_:
+...and the following _mixin_:
 
-*  `Tooltip` - imported as 
-`import Tooltip as 'ember-cli-bootstrap3-tooltip/mixins/tooltip'` and
+*  `TwbsTooltip` - imported as 
+`import TwbsTooltip as 'ember-cli-bootstrap3-tooltip/mixins/twbs-tooltip'` and
 can be added to new or existing components.
 
 _Further information about these items can be found in the Usage 
@@ -36,22 +48,29 @@ section below._
 
 ## Requirements
 
-* Ember >= 1.13.0
+* **Ember >= 2.3.0**: This addon uses the 
+[hash helper](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) which was 
+introduced in Ember-2.3.0.
 * Ember CLI
+* You must have Bootstrap 3.x installed in your Ember application.  Feel free to use the
+  [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
+  addon to setup Bootstrap if you haven't already done so.
+* Tooltips require the _tooltip_ plugin to be included in your version of Bootstrap.
 
 ## Installation
 
 The following will install this addon:
 
-    $ ember install ember-cli-bootstrap3-tooltip
+```
+ember install ember-cli-bootstrap3-tooltip
+```
 
-__As mentioned you must install some version of Bootstrap3 in your
-Ember application should you want this to work.__
+__As mentioned, you must install Bootstrap3's tooltip styles and script plugin.  See the requirements section above.__
 
 ### Upgrading
 
 When working through the Ember upgrade process, I recommend
-invoking the `ember install ember-cli-bootstrap3-tooltip` command once 
+invoking the `ember install ember-cli-bootstrap3-tooltip` command once
 you are done to get the latest version of the addon.
 
 ## Usage
@@ -65,17 +84,29 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes (e.g. `initialism`)
-* Also see the Tooltip mixin description below
+* `class` - any additional CSS classes (e.g. `initialism`)
 
 ##### Examples
 
-    {{#twbs-abbr title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr annimation?=false title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr delay=500 title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr html?=true title="Best Friends, <strong>Forever</strong>"}}BFF{{/twbs-abbr}}
-    {{#twbs-abbr placement="right" title="Best Friends, Forever"}}BFF{{/twbs-abbr}}
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-button class="btn-default title="Some tooltip value"}}`
+
+Create a `<button>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* _All HTML5 [button](https://www.w3schools.com/TAgs/tag_button.asp) attributes._
+* `title` - the tooltip String.
+* `class` - any additional CSS classes (e.g. `btn-default`)
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
 
 #### `{{twbs-cite title="Some tooltip value"}}`
 
@@ -84,16 +115,27 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes.
-* Also see the Tooltip mixin description below.
 
 ##### Examples
 
-    <blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in {{#twbs-cite title="Source Title"}}Source Title{{/twbs-cite}}</footer>
-    </blockquote>
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-i title="Some tooltip value"}}`
+
+Create an `<i>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* `title` - the tooltip String.
+* `class` - any additional CSS classes (e.g. `fa fa-clock`)
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
 
 #### `{{twbs-span title="Some tooltip value"}}`
 
@@ -102,21 +144,45 @@ generate a tooltip.
 
 ##### Arguments
 
+* _All of the properties listed in the `TwbsTooltip` mixin_.
 * `title` - the tooltip String.
-* `classNames` - any additional CSS classes.
-* Also see the Tooltip mixin description below.
 
 ##### Examples
 
-    {{#twbs-span title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span annimation?=false title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span delay=500 title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span html?=true title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
-    {{#twbs-span placement="right" title="Some sort of tooltip in a span"}}Hover Over This{{/twbs-span}}
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `{{twbs-time datetime="2001-09-11T04:00:00.000Z" title="Some tooltip value"}}`
+
+Create an `<time>` element whose `title` property will be used to 
+generate a tooltip.
+
+##### Arguments
+
+* _All of the properties listed in the `TwbsTooltip` mixin_.
+* _All HTML5 [time](https://www.w3schools.com/TAgs/tag_time.asp) attributes._
+* `title` - the tooltip String.
+
+##### Examples
+
+[See the demonstration app for examples](http://ember-cli-bootstrap3-tooltip.cybertooth.io/)
+
+#### `title` Component
+
+When you have a tooltip title that is another rendered component or some sort of dynamic content, use 
+the nested title component on any one of the above `twbs-*` tags.
+
+Here's an example from the [demo site](http://ember-cli-bootstrap3-tooltip.cybertooth.io/) of a clock 
+icon with the current time changing in the tooltip:
+
+```hbs
+{{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
+  {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
+{{/twbs-i}}
+```
 
 ### Mixins
 
-#### `Tooltip`
+#### `TwbsTooltip`
 
 Check out the [Bootstrap Tooltip Options documentation](http://getbootstrap.com/javascript/#tooltips-options)
 as all have been exposed in this mixin, with the following cavaets:
@@ -124,7 +190,7 @@ as all have been exposed in this mixin, with the following cavaets:
 * The boolean options have been renamed to include
 a question mark; e.g. `animation` is `animation?` and `html` is 
 `html?`.
-* For simplicity sake, the `delay` option has been turned into two
+* For conveneince, the `delay` option has been enhanced to accept two
 arguments: `delayHide` and `delayShow`.
 * `title` is changed to `defaultTitle` because
 `title` is already used for the actual tooltip.
@@ -134,12 +200,12 @@ Ember.
 
 ##### Properties
 
-* `animation` - Alias to `animation?`.
+* `animation` - Readonly alias to `animation?`.
 * `animation?` - Apply a CSS fade transition to the tooltip (`boolean` defaults to `true`)
 * `defaultTitle` - Default title value if title attribute isn't present.  If a function is given, it will be called with its this reference set to the element that the tooltip is attached to.  (`String` defaults to ''; or a function)
 * `delayHide` - Delay hiding the tooltip (ms) - does not apply to manual trigger type (`number` defaults to 0)
 * `delayShow` - Delay showing the tooltip (ms) - does not apply to manual trigger type (`number` defaults to 0)
-* `html` - Alias to `html?`.
+* `html` - Readonly alias to `html?`.
 * `html?` - Insert HTML into the tooltip. If false, jQuery's text method will be used to insert content into the DOM. Use text if you're worried about XSS attacks. (`boolean` defaults to `false`)
 * `placement` - How to position the tooltip: `top` | `bottom` | `left` | `right` | `auto`.  When `auto` is specified, it will dynamically reorient the tooltip. For example, if placement is `auto left`, the tooltip will display to the left when possible, otherwise it will display right.  When a function is used to determine the placement, it is called with the tooltip DOM node as its first argument and the triggering element DOM node as its second. The this context is set to the tooltip instance. (`String` defaulting to `top`; or a function)
 * `selector` - If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have tooltips added. See [this](https://github.com/twbs/bootstrap/issues/4215) and an [informative example](http://jsbin.com/zopod/1/edit). (`String` defaults to `false`)
@@ -150,10 +216,8 @@ Ember.
 
 ### Troubleshooting And Tips
 
-1. If you have a title that is dynamic, maybe it includes the current 
-time, you will want to bind a function to 
-the mixin's `defaultTitle` property and __NOT__ specify a `title`
-argument.
+1. If you have a title that is dynamic use the nested title component.
+1. Make sure the Bootstrap3 CSS and the tooltip Javascript plugin is installed.
 
 ---
 
@@ -161,9 +225,23 @@ argument.
 
 ## Setup
 
-* `git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git`
-* `npm install`
-* `bower install`
+### Checkout
+
+```
+$ git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git
+```
+
+### With NPM
+
+```
+npm install
+```
+
+### With Yarn
+
+```
+yarn
+```
 
 ## Running The Dummy Application
 
@@ -186,16 +264,16 @@ For more information on using ember-cli, visit [http://ember-cli.com/](http://em
 
 ## Linking
 
-1. From the command line at the root of __this__ project run the 
-`npm link` command to _link_ this addon within your local 
+1. From the command line at the root of __this__ project run the
+`npm link` command to _link_ this addon within your local
 node repository.
-1. From the _other_ Ember project that you wish to test this addon 
+1. From the _other_ Ember project that you wish to test this addon
 in, execute the following command:
 `npm link ember-cli-bootstrap3-tooltip`.
 1. Now in that same _other_ Ember project, you should go into the
 `package.json` and add the ember addon with the version _*_.  It will
 look something like this: `"ember-cli-bootstrap3-tooltip": "*"`.  Now
-when/if you execute `npm install` on this _other_ project it 
+when/if you execute `npm install` on this _other_ project it
 will know to look for the linked addon rather than fetch it from
 the central repository.
 
@@ -204,6 +282,33 @@ the central repository.
 1. Remove the addon from your local node repository with the following
 command (that can be run anywhere):
 `npm uninstall -g ember-cli-bootstrap3-tooltip`
-1. Remove the reference to the `ember-cli-bootstrap3-tooltip` 
+1. Remove the reference to the `ember-cli-bootstrap3-tooltip`
 in your _other_ project's `package.json`.
-1. Run an `npm prune` from the root of your _other_ project's command line.
+1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
+
+# Deploying The Dummy Application
+
+Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
+with a valid key and secret,
+
+```
+[cybertooth]
+aws_access_key_id = <KEY>
+aws_secret_access_key = <SECRET>
+```
+
+Deploy by invoking the following command: `ember deploy production`
+
+Confirm your changes are showing up in our S3 container: http://ember-cli-bootstrap3-tooltip.cybertooth.io/
+
+# Releasing & Publishing To NPM
+
+The steps are listed below; roll the version, push the changes to Git, publish to NPM, and update the demo website.
+
+```
+npm version x.y.z-sub.#
+git push
+git push --tags
+npm publish
+ember deploy production
+```
