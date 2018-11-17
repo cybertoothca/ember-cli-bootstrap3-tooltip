@@ -1,1 +1,1 @@
-export {default} from 'ember-cli-bootstrap3-tooltip/components/twbs-span/title';
+export { default } from 'ember-cli-bootstrap3-tooltip/components/twbs-span/title';

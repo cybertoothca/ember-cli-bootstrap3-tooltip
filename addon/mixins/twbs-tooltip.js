@@ -154,7 +154,7 @@ export default Ember.Mixin.create({
    * If a function is given, it is called with the triggering element DOM node as its only argument. The
    * this context is set to the tooltip instance.
    */
-  viewport: {selector: 'body', padding: 0},
+  viewport: { selector: 'body', padding: 0 },
   /**
    * Return a hash of all the options that can easily be passed into the tooltip initialization.
    * @returns {*|Object}
@@ -199,11 +199,11 @@ export default Ember.Mixin.create({
   _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
     const $tooltip = this.$().tooltip(this.getOptions());
     Ember.A().pushObjects([
-      {twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide')},
-      {twbsEvent: 'hidden.bs.tooltip', handler: this.get('onHidden')},
-      {twbsEvent: 'inserted.bs.tooltip', handler: this.get('onInserted')},
-      {twbsEvent: 'show.bs.tooltip', handler: this.get('onShow')},
-      {twbsEvent: 'shown.bs.tooltip', handler: this.get('onShown')}
+      { twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide') },
+      { twbsEvent: 'hidden.bs.tooltip', handler: this.get('onHidden') },
+      { twbsEvent: 'inserted.bs.tooltip', handler: this.get('onInserted') },
+      { twbsEvent: 'show.bs.tooltip', handler: this.get('onShow') },
+      { twbsEvent: 'shown.bs.tooltip', handler: this.get('onShown') }
     ]).forEach((event) => {
       $tooltip.on(event.twbsEvent, () => {
         if (Ember.isPresent(event.handler)) {

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import TwbsTooltipMixin from 'ember-cli-bootstrap3-tooltip/mixins/twbs-tooltip';
-import {module, test} from 'qunit';
+import { module, test } from 'qunit';
 
 module('Unit | Mixin | twbs tooltip');
 
