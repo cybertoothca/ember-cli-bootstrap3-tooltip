@@ -8,7 +8,6 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-/*
   // bootstrap & bootstrap-sass from node_modules
   app.import("node_modules/bootstrap/dist/js/bootstrap.js");
   app.import("node_modules/bootstrap/fonts/glyphicons-halflings-regular.eot", {
@@ -47,7 +46,6 @@ module.exports = function(defaults) {
   app.import("node_modules/font-awesome/fonts/fontawesome-webfont.woff2", {
     destDir: "assets/font-awesome/fonts"
   });
-*/
 
   return app.toTree();
 };
