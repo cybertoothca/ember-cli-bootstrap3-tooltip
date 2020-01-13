@@ -1,6 +1,10 @@
-# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip) ![](http://embadge.io/v1/badge.svg?start=2.3.0)
+# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip)
 
-[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
+![https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/actions](https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/workflows/Build,%20Test,%20Publish%20Coverage/badge.svg)
+
+[![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip)
+
+[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg)  ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
 
 This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](https://getbootstrap.com/docs/3.3/javascript/#tooltips).
 

@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 8.x
       - name: Install dependencies (yarn)
-        run: yarn install
+        run: yarn --non-interactive --no-progress install
 #      - name: Lint (hbs)
 #        run: yarn lint:hbs
 #      - name: Lint (js)
