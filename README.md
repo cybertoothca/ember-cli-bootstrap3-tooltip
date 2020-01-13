@@ -1,6 +1,10 @@
-# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip) ![](http://embadge.io/v1/badge.svg?start=2.3.0)
+# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip)
 
-[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg) [![CircleCI](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip.svg?style=shield)](http://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
+![https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/actions](https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/workflows/Build,%20Test,%20Publish%20Coverage/badge.svg)
+
+[![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip)
+
+[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg)  ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
 
 This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](https://getbootstrap.com/docs/3.3/javascript/#tooltips).
 
@@ -221,48 +225,48 @@ Ember.
 
 ---
 
-# Ember Addon Building And Testing
+## Ember Addon Building And Testing
 
-## Setup
+### Setup
 
-### Checkout
+#### Checkout
 
 ```
 $ git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git
 ```
 
-### With NPM
-
-```
-npm install
-```
-
-### With Yarn
+#### With Yarn
 
 ```
 yarn
 ```
 
-## Running The Dummy Application
+### Running The Dummy Application
 
 * `ember server`
 * Visit your app at http://localhost:4200.
 
-## Running Addon Tests
+### Linting
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
+* `yarn lint:hbs`
+* `yarn lint:js`
+* `yarn lint:js -- --fix`
+
+### Running Addon Tests
+
+* `yarn test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
-## Building The Addon
+### Building The Addon
 
 * `ember build`
 
 For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
 
-# Linking This Addon For Local Testing
+## Linking This Addon For Local Testing
 
-## Linking
+### Linking
 
 1. From the command line at the root of __this__ project run the
 `npm link` command to _link_ this addon within your local
@@ -277,7 +281,7 @@ when/if you execute `npm install` on this _other_ project it
 will know to look for the linked addon rather than fetch it from
 the central repository.
 
-## Unlinking
+### Unlinking
 
 1. Remove the addon from your local node repository with the following
 command (that can be run anywhere):
@@ -286,7 +290,7 @@ command (that can be run anywhere):
 in your _other_ project's `package.json`.
 1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
 
-# Deploying The Dummy Application
+### Deploying The Dummy Application
 
 Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
 with a valid key and secret,
@@ -301,7 +305,7 @@ Deploy by invoking the following command: `ember deploy production`
 
 Confirm your changes are showing up in our S3 container: http://ember-cli-bootstrap3-tooltip.cybertooth.io/
 
-# Releasing & Publishing To NPM
+## Releasing & Publishing To NPM
 
 The steps are listed below; roll the version, push the changes to Git, publish to NPM, and update the demo website.
 
@@ -312,3 +316,7 @@ git push --tags
 npm publish
 ember deploy production
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md).

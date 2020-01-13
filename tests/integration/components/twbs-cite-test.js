@@ -1,36 +1,38 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
 
-moduleForComponent('twbs-cite', 'Integration | Component | twbs cite', {
-  integration: true
-});
+module('Integration | Component | twbs cite', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('when no block is passed', function (assert) {
-  this.render(hbs`{{twbs-cite}}`);
-  assert.ok(this.$('cite').hasClass('twbs-cite'));
-  assert.equal(this.$().text().trim(), '');
-  assert.notOk(this.$('cite').hasClass('twbs-span'));
-});
+  test('when no block is passed', async function(assert) {
+    await render(hbs`{{twbs-cite}}`);
+    assert.dom('cite').hasClass('twbs-cite');
+    assert.dom('*').hasText('');
+    assert.dom('cite').hasNoClass('twbs-span');
+  });
 
-test('when an empty block is passed', function (assert) {
-  this.render(hbs`
-    {{#twbs-cite}}{{/twbs-cite}}
-  `);
-  assert.ok(this.$('cite').hasClass('twbs-cite'));
-  assert.equal(this.$().text().trim(), '');
-  assert.equal(this.$('cite').attr('title'), '');
-  assert.equal(this.$('cite').attr('data-original-title'), '');
-  assert.notOk(this.$('cite').hasClass('twbs-span'));
-});
+  test('when an empty block is passed', async function(assert) {
+    await render(hbs`
+      {{#twbs-cite}}{{/twbs-cite}}
+    `);
+    assert.dom('cite').hasClass('twbs-cite');
+    assert.dom('*').hasText('');
+    assert.dom('cite').hasAttribute('title', '');
+    assert.dom('cite').hasAttribute('data-original-title', '');
+    assert.dom('cite').hasNoClass('twbs-span');
+  });
 
-test('when a block is passed', function (assert) {
-  this.render(hbs`
-    {{#twbs-cite title="Some sort of title"}}template block text{{/twbs-cite}}
-  `);
-  assert.ok(this.$('cite').hasClass('twbs-cite'));
-  assert.equal(this.$().text().trim(), 'template block text');
-  assert.equal(this.$('cite').attr('title'), '', 'The title attribute is cleared');
-  assert.equal(this.$('cite').attr('data-original-title'), 'Some sort of title');
-  assert.equal(this.$('cite').text().trim(), 'template block text');
-  assert.notOk(this.$('cite').hasClass('twbs-span'));
+  test('when a block is passed', async function(assert) {
+    await render(hbs`
+      {{#twbs-cite title="Some sort of title"}}template block text{{/twbs-cite}}
+    `);
+    assert.dom('cite').hasClass('twbs-cite');
+    assert.dom('*').hasText('template block text');
+    assert.dom('cite').hasAttribute('title', '', 'The title attribute is cleared');
+    assert.dom('cite').hasAttribute('data-original-title', 'Some sort of title');
+    assert.dom('cite').hasText('template block text');
+    assert.dom('cite').hasNoClass('twbs-span');
+  });
 });
