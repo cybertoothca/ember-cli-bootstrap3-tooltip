@@ -1,4 +1,4 @@
-import { render } from '@ember/test-helpers';
+import { render, find } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
@@ -29,6 +29,6 @@ module('Integration | Component | twbs span/title', function(hooks) {
     await render(hbs`{{#twbs-span/title register=register}}Some Block{{/twbs-span/title}}`);
 
     assert.equal(this.$('.twbs-span-title').css('display'), 'none');
-    assert.ok(this.$('.twbs-span-title').hasClass('hidden'));
+    assert.ok(find('.twbs-span-title').classList.contains('hidden'));
   });
 });
