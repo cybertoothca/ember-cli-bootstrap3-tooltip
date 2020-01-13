@@ -119,6 +119,11 @@ export default Ember.Mixin.create({
    */
   placement: 'top',
   /**
+   * Enable or disable the sanitization. If activated 'template', 'content' and 'title' options will be sanitized.
+   * @see https://getbootstrap.com/docs/3.4/javascript/#popovers-options
+   */
+  sanitize: true,
+  /**
    * If a selector is provided, tooltip objects will be delegated to the specified targets. In practice,
    * this is used to enable dynamic HTML content to have tooltips added. See
    * this (https://github.com/twbs/bootstrap/issues/4215) and an
@@ -161,7 +166,7 @@ export default Ember.Mixin.create({
    */
   getOptions() {
     const hash =
-      this.getProperties('animation', 'html', 'placement', 'selector', 'template', 'viewport');
+      this.getProperties('animation', 'html', 'placement', 'sanitize', 'selector', 'template', 'viewport');
     hash.container = this.get('tooltipContainer');
     hash.delay = this.get('_delayComputed');
     hash.trigger = this.get('tooltipTrigger');
@@ -174,12 +179,12 @@ export default Ember.Mixin.create({
    * Object structure is: `delay: { "show": 500, "hide": 100 }`.
    * @private
    */
-  _delayComputed: Ember.computed('delay', 'delayHide', 'delayShow', function () {
+  _delayComputed: Ember.computed('delay', 'delayHide', 'delayShow', function() {
     const delayObject = {};
     const delay = this.get('delay');
 
-    Ember.set(delayObject, 'hide', Ember.getWithDefault(this, 'delayHide', delay));
-    Ember.set(delayObject, 'show', Ember.getWithDefault(this, 'delayShow', delay));
+    delayObject.hide = Ember.getWithDefault(this, 'delayHide', delay);
+    delayObject.show = Ember.getWithDefault(this, 'delayShow', delay);
 
     return delayObject;
   }),
@@ -187,7 +192,7 @@ export default Ember.Mixin.create({
    * Destroy the bootstrap tooltip when the component is being destroyed.
    * @private
    */
-  _destroyBoostrapTooltip: Ember.on('willDestroyElement', Ember.observer('title', function () {
+  _destroyBoostrapTooltip: Ember.on('willDestroyElement', Ember.observer('title', function() {
     if (Ember.isPresent(this.get('title'))) {
       this.$().tooltip('destroy');
     }
@@ -196,7 +201,7 @@ export default Ember.Mixin.create({
    * Initialize the bootstrap tooltip if the title attribute is present.
    * @private
    */
-  _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function () {
+  _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function() {
     const $tooltip = this.$().tooltip(this.getOptions());
     Ember.A().pushObjects([
       { twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide') },

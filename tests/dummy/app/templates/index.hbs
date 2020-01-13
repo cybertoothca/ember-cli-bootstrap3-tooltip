@@ -31,14 +31,15 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-abbr placement="right" as |abbr|}}
-          {{#abbr.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/abbr.title}}
+          {{#abbr.title}}{{clock.formattedTime}}{{/abbr.title}}
           H:m:s
         {{/twbs-abbr}}
+        {{clock.formattedTime}}
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
 <pre>\{{#twbs-abbr placement="right" as |abbr|}}
-  \{{#abbr.title}}\{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}\{{/abbr.title}}
+  \{{#abbr.title}}\{{clock.formattedTime}}\{{/abbr.title}}
   H:m:s
 \{{/twbs-abbr}}
 </pre>
@@ -58,8 +59,8 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-button
-          class="btn-default" html?=true placement="right"
-          title="A Bootstrap3 button with class <code>btn-default</code>"}}
+                class="btn-default" html?=true placement="right"
+                title="A Bootstrap3 button with class <code>btn-default</code>"}}
           Default Button
         {{/twbs-button}}
       </div>
@@ -77,9 +78,9 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-button
-          class="btn-info" placement="right"
-          title="Click again to dismiss."
-          tooltipTrigger="click"}}
+                class="btn-info" placement="right"
+                title="Click again to dismiss."
+                tooltipTrigger="click"}}
           Click To Show Tooltip
         {{/twbs-button}}
       </div>
@@ -157,13 +158,13 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
-          {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
+          {{#i.title}}{{clock.formattedTime}}{{/i.title}}
         {{/twbs-i}}
       </div>
       <div class="col-sm-8">
         {{!-- @formatter:off --}}
 <pre>\{{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
-  \{{#i.title}}\{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}\{{/i.title}}
+  \{{#i.title}}\{{clock.formattedTime}}\{{/i.title}}
 \{{/twbs-i}}
 </pre>
         {{!-- @formatter:on --}}
@@ -199,7 +200,7 @@
         {{#twbs-span placement="right" as |span|}}
           Hover For Dynamic Content
           {{#span.title}}
-            {{clock.hour}}:{{clock.minute}}:{{clock.second}}
+            {{clock.formattedTime}}
           {{/span.title}}
         {{/twbs-span}}
       </div>
@@ -208,7 +209,7 @@
 <pre>\{{#twbs-span placement="right" as |span|}}
   Hover For Dynamic Content
   \{{#span.title}}
-    \{{clock.hour}}:\{{clock.minute}}:\{{clock.second}}
+    \{{clock.formattedTime}}
   \{{/span.title}}
 \{{/twbs-span}}
 </pre>
@@ -228,11 +229,11 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-time
-          datetime=model.timeDemoISOString html?=true placement="bottom"
-          title=(
-            concat "The <code>datetime</code> attribute of this <code>time</code> element is set to "
-            model.timeDemoISOString
-          )
+                datetime=model.timeDemoISOString html?=true placement="bottom"
+                title=(
+                        concat "The <code>datetime</code> attribute of this <code>time</code> element is set to "
+                        model.timeDemoISOString
+                )
         }}
           {{model.timeDemoString}}
         {{/twbs-time}}
@@ -265,8 +266,8 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-span
-          tooltipTrigger="manual"
-          title="Manual triggering of the tooltip." as |span hide show toggle|}}
+                tooltipTrigger="manual"
+                title="Manual triggering of the tooltip." as |span hide show toggle|}}
           The text for this tooltip is triggered by the events listed below.
           <br/>
           <a {{action show}} href="#">Show</a>
@@ -319,12 +320,12 @@
     <div class="row">
       <div class="col-sm-4 form-group">
         {{#twbs-span
-          onHide=(action "fireEvent" "#js-hide")
-          onHidden=(action "fireEvent" "#js-hidden")
-          onInserted=(action "fireEvent" "#js-inserted")
-          onShow=(action "fireEvent" "#js-show")
-          onShown=(action "fireEvent" "#js-shown")
-          title="As events fire their corresponding label will color green-orange-red."}}
+                onHide=(action "fireEvent" "#js-hide")
+                onHidden=(action "fireEvent" "#js-hidden")
+                onInserted=(action "fireEvent" "#js-inserted")
+                onShow=(action "fireEvent" "#js-show")
+                onShown=(action "fireEvent" "#js-shown")
+                title="As events fire their corresponding label will color green-orange-red."}}
           Hover over this for a demonstration of the tooltip events firing.
         {{/twbs-span}}
         <p>
@@ -594,7 +595,7 @@
         </p>
         <p>
           {{#twbs-button
-            class="btn-default" placement="right" tooltipTrigger="focus" title="Leave button focus to hide."}}
+                  class="btn-default" placement="right" tooltipTrigger="focus" title="Leave button focus to hide."}}
             tooltipTrigger="focus"
           {{/twbs-button}}
         </p>
@@ -605,7 +606,7 @@
         </p>
         <p>
           {{#twbs-span
-            placement="right" tooltipTrigger="manual" title="Click again to hide." as |span hide show toggle|
+                  placement="right" tooltipTrigger="manual" title="Click again to hide." as |span hide show toggle|
           }}
             <code {{action toggle}}>tooltipTrigger="manual"</code>
           {{/twbs-span}}

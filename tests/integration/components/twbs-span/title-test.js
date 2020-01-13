@@ -5,10 +5,10 @@ moduleForComponent('twbs-span/title', 'Integration | Component | twbs span/title
   integration: true
 });
 
-test('when registering the body html is provided', function (assert) {
+test('when registering the body html is provided', function(assert) {
   let isRegistered = false;
   let htmlBlock = null;
-  this.set('register', function (registeredHtmlBlock) {
+  this.set('register', function(registeredHtmlBlock) {
     isRegistered = true;
     htmlBlock = registeredHtmlBlock;
   });
@@ -16,12 +16,12 @@ test('when registering the body html is provided', function (assert) {
   this.render(hbs`{{#twbs-span/title register=register}}Some Block{{/twbs-span/title}}`);
 
   assert.ok(isRegistered);
-  assert.ok(htmlBlock.hasClass('twbs-tooltip-title'));
-  assert.equal(htmlBlock.html(), 'Some Block');
+  assert.ok(htmlBlock.classList.contains('twbs-tooltip-title'));
+  assert.equal(htmlBlock.innerHTML, 'Some Block');
 });
 
-test('when rendered the element is completely hidden', function (assert) {
-  this.set('register', function () {
+test('when rendered the element is completely hidden', function(assert) {
+  this.set('register', function() {
     // do nothing
   });
 

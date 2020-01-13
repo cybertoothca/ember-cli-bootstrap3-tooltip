@@ -1,6 +1,7 @@
 import Ember from 'ember';
-import layout from '../templates/components/twbs-span';
 import TwbsTooltip from '../mixins/twbs-tooltip';
+// noinspection JSFileReferences
+import layout from '../templates/components/twbs-span';
 
 export default Ember.Component.extend(TwbsTooltip, {
   actions: {
@@ -11,6 +12,7 @@ export default Ember.Component.extend(TwbsTooltip, {
     setElementTitle(title) {
       this.set('html?', true);
       this.set('defaultTitle', title);
+      this.set('sanitize', false);
     }
   },
   classNameBindings: ['twbsSpan'],

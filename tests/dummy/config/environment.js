@@ -1,7 +1,7 @@
 /* eslint-env node */
 'use strict';
 
-module.exports = function (environment) {
+module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'dummy',
     environment,
@@ -44,7 +44,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // put shit here if desired
+    // here you can enable a production-specific feature
   }
 
   return ENV;
