@@ -10,6 +10,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Set Node.js 8.x
+        uses: actions/setup-node@master
+        with:
+          node-version: 8.x
       - name: Install dependencies (yarn)
         run: yarn install
 #      - name: Lint (hbs)
