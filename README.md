@@ -225,48 +225,53 @@ Ember.
 
 ---
 
-# Ember Addon Building And Testing
+## Ember Addon Building And Testing
 
-## Setup
+### Setup
 
-### Checkout
+#### Checkout
 
 ```
 $ git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git
 ```
 
-### With NPM
+#### With NPM
 
 ```
 npm install
 ```
 
-### With Yarn
+#### With Yarn
 
 ```
 yarn
 ```
 
-## Running The Dummy Application
+### Running The Dummy Application
 
 * `ember server`
 * Visit your app at http://localhost:4200.
 
-## Running Addon Tests
+### Linting
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
+* `yarn lint:js`
+* `yarn lint:js -- --fix`
+
+### Running Addon Tests
+
+* `yarn test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
-## Building The Addon
+### Building The Addon
 
 * `ember build`
 
 For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
 
-# Linking This Addon For Local Testing
+## Linking This Addon For Local Testing
 
-## Linking
+### Linking
 
 1. From the command line at the root of __this__ project run the
 `npm link` command to _link_ this addon within your local
@@ -281,7 +286,7 @@ when/if you execute `npm install` on this _other_ project it
 will know to look for the linked addon rather than fetch it from
 the central repository.
 
-## Unlinking
+### Unlinking
 
 1. Remove the addon from your local node repository with the following
 command (that can be run anywhere):
@@ -290,7 +295,7 @@ command (that can be run anywhere):
 in your _other_ project's `package.json`.
 1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
 
-# Deploying The Dummy Application
+### Deploying The Dummy Application
 
 Make sure your `~/.aws/credentials` file has a profile named _cybertooth_ 
 with a valid key and secret,
@@ -305,7 +310,7 @@ Deploy by invoking the following command: `ember deploy production`
 
 Confirm your changes are showing up in our S3 container: http://ember-cli-bootstrap3-tooltip.cybertooth.io/
 
-# Releasing & Publishing To NPM
+## Releasing & Publishing To NPM
 
 The steps are listed below; roll the version, push the changes to Git, publish to NPM, and update the demo website.
 
@@ -316,3 +321,7 @@ git push --tags
 npm publish
 ember deploy production
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE.md).
