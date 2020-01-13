@@ -1,10 +1,15 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
+import { computed, getWithDefault, observer } from '@ember/object';
+import { alias, readOnly } from '@ember/object/computed';
+import { on } from '@ember/object/evented';
+import Mixin from '@ember/object/mixin';
+import { isPresent } from '@ember/utils';
 
 /**
  * The Tooltip mixin can be added to new or existing components to enable the Bootstrap tooltip.
  * @see http://getbootstrap.com/javascript/#tooltips-options
  */
-export default Ember.Mixin.create({
+export default Mixin.create({
   actions: {
     /**
      * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
@@ -28,7 +33,7 @@ export default Ember.Mixin.create({
   /**
    * Read-only access to the animation? flag.
    */
-  animation: Ember.computed.readOnly('animation?'),
+  animation: readOnly('animation?'),
   /**
    * Apply a CSS fade transition?
    */
@@ -64,7 +69,7 @@ export default Ember.Mixin.create({
    * Insert HTML into the tooltip. If false, jQuery's text method will be used to insert content into
    * the DOM. Use text if you're worried about XSS attacks.
    */
-  html: Ember.computed.alias('html?'),
+  html: alias('html?'),
   'html?': false,
   /**
    * Supply an action that will be fired during the tooltip's hide event.
@@ -179,12 +184,12 @@ export default Ember.Mixin.create({
    * Object structure is: `delay: { "show": 500, "hide": 100 }`.
    * @private
    */
-  _delayComputed: Ember.computed('delay', 'delayHide', 'delayShow', function() {
+  _delayComputed: computed('delay', 'delayHide', 'delayShow', function() {
     const delayObject = {};
     const delay = this.get('delay');
 
-    delayObject.hide = Ember.getWithDefault(this, 'delayHide', delay);
-    delayObject.show = Ember.getWithDefault(this, 'delayShow', delay);
+    delayObject.hide = getWithDefault(this, 'delayHide', delay);
+    delayObject.show = getWithDefault(this, 'delayShow', delay);
 
     return delayObject;
   }),
@@ -192,8 +197,8 @@ export default Ember.Mixin.create({
    * Destroy the bootstrap tooltip when the component is being destroyed.
    * @private
    */
-  _destroyBoostrapTooltip: Ember.on('willDestroyElement', Ember.observer('title', function() {
-    if (Ember.isPresent(this.get('title'))) {
+  _destroyBoostrapTooltip: on('willDestroyElement', observer('title', function() {
+    if (isPresent(this.get('title'))) {
       this.$().tooltip('destroy');
     }
   })),
@@ -201,9 +206,9 @@ export default Ember.Mixin.create({
    * Initialize the bootstrap tooltip if the title attribute is present.
    * @private
    */
-  _initializeBootstrapTooltip: Ember.on('didInsertElement', Ember.observer('title', function() {
+  _initializeBootstrapTooltip: on('didInsertElement', observer('title', function() {
     const $tooltip = this.$().tooltip(this.getOptions());
-    Ember.A().pushObjects([
+    A().pushObjects([
       { twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide') },
       { twbsEvent: 'hidden.bs.tooltip', handler: this.get('onHidden') },
       { twbsEvent: 'inserted.bs.tooltip', handler: this.get('onInserted') },
@@ -211,7 +216,7 @@ export default Ember.Mixin.create({
       { twbsEvent: 'shown.bs.tooltip', handler: this.get('onShown') }
     ]).forEach((event) => {
       $tooltip.on(event.twbsEvent, () => {
-        if (Ember.isPresent(event.handler)) {
+        if (isPresent(event.handler)) {
           event.handler(this.$(), this);
         }
       })

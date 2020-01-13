@@ -1,18 +1,18 @@
+import { isPresent } from '@ember/utils';
 import { moduleForComponent, test } from 'ember-qunit';
-import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('twbs-span', 'Integration | Component | twbs span', {
   integration: true
 });
 
-test('when no block is passed', function (assert) {
+test('when no block is passed', function(assert) {
   this.render(hbs`{{twbs-span}}`);
   assert.ok(this.$('span').hasClass('twbs-span'));
   assert.equal(this.$().text().trim(), '');
 });
 
-test('when an empty block is passed', function (assert) {
+test('when an empty block is passed', function(assert) {
   this.render(hbs`
     {{#twbs-span}}{{/twbs-span}}
   `);
@@ -22,7 +22,7 @@ test('when an empty block is passed', function (assert) {
   assert.equal(this.$('span').attr('data-original-title'), '');
 });
 
-test('when a block is passed', function (assert) {
+test('when a block is passed', function(assert) {
   this.render(hbs`
     {{#twbs-span title="Some sort of title"}}template block text{{/twbs-span}}
   `);
@@ -34,7 +34,7 @@ test('when a block is passed', function (assert) {
   assert.equal(this.$('span').text().trim(), 'template block text');
 });
 
-test('when a title component is yielded within the block', function (assert) {
+test('when a title component is yielded within the block', function(assert) {
   this.render(hbs`
     {{#twbs-span as |span|}}
       Block With Title Component
@@ -45,7 +45,7 @@ test('when a title component is yielded within the block', function (assert) {
   assert.equal(this.$('.twbs-tooltip-title').text(), 'This is the tooltip');
 });
 
-test('when triggering the show and hide action', function (assert) {
+test('when triggering the show and hide action', function(assert) {
   this.render(hbs`
     {{#twbs-span tooltipTrigger="manual" as |span hide show toggle|}}
       Block With Title Component
@@ -65,7 +65,7 @@ test('when triggering the show and hide action', function (assert) {
   assert.equal(this.$('div.tooltip.fade.in').length, 0);
 });
 
-test('when triggering the toggle action', function (assert) {
+test('when triggering the toggle action', function(assert) {
   this.render(hbs`
     {{#twbs-span tooltipTrigger="manual" as |span hide show toggle|}}
       Block With Title Component
@@ -85,31 +85,31 @@ test('when triggering the toggle action', function (assert) {
 });
 
 // TODO: this should be moved into an integration test to capitalize on the andThen helper
-test('when binding to the onHide event', function (assert) {
+test('when binding to the onHide event', function(assert) {
   let isHide = false, isHidden = false, isInserted = false, isShow = false, isShown = false;
 
   this.setProperties({
-    onHideAction: function ($element, component) {
+    onHideAction: function($element, component) {
       isHide = true;
-      assert.ok(Ember.isPresent($element));
-      assert.ok(Ember.isPresent(component));
+      assert.ok(isPresent($element));
+      assert.ok(isPresent(component));
     },
-    onHiddenAction: function (/*$element, component*/) {
+    onHiddenAction: function(/*$element, component*/) {
       isHidden = true;
       // assert.ok(Ember.isPresent($element));
       // assert.ok(Ember.isPresent(component));
     },
-    onInsertedAction: function ($element, component) {
+    onInsertedAction: function($element, component) {
       isInserted = true;
-      assert.ok(Ember.isPresent($element));
-      assert.ok(Ember.isPresent(component));
+      assert.ok(isPresent($element));
+      assert.ok(isPresent(component));
     },
-    onShowAction: function ($element, component) {
+    onShowAction: function($element, component) {
       isShow = true;
-      assert.ok(Ember.isPresent($element));
-      assert.ok(Ember.isPresent(component));
+      assert.ok(isPresent($element));
+      assert.ok(isPresent(component));
     },
-    onShownAction: function (/*$element, component*/) {
+    onShownAction: function(/*$element, component*/) {
       isShown = true;
       // assert.ok(Ember.isPresent($element));
       // assert.ok(Ember.isPresent(component));

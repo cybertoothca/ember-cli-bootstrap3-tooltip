@@ -1,26 +1,27 @@
 import Controller from '@ember/controller';
+import { later } from '@ember/runloop';
 import { inject as service } from '@ember/service';
-import Ember from 'ember';
+import $ from 'jquery';
 
 export default Controller.extend({
   actions: {
     fireEvent(labelId/*, $element, component*/) {
-      const $label = Ember.$(labelId);
+      const $label = $(labelId);
 
       $label
         .removeClass('label-default')
         .addClass('label-success');
 
-      Ember.run.later(this, () => {
+      later(this, () => {
         $label
           .removeClass('label-success')
           .addClass('label-warning');
 
-        Ember.run.later(this, () => {
+        later(this, () => {
           $label
             .removeClass('label-warning')
             .addClass('label-danger');
-          Ember.run.later(this, () => {
+          later(this, () => {
             $label
               .removeClass('label-danger')
               .addClass('label-default');

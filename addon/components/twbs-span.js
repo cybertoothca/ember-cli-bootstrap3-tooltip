@@ -1,9 +1,9 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import TwbsTooltip from '../mixins/twbs-tooltip';
 // noinspection JSFileReferences
 import layout from '../templates/components/twbs-span';
 
-export default Ember.Component.extend(TwbsTooltip, {
+export default Component.extend(TwbsTooltip, {
   actions: {
     /**
      * Sets the `title` property to the supplied value and the `html?` property to `true`.
