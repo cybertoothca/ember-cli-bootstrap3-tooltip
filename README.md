@@ -235,12 +235,6 @@ Ember.
 $ git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git
 ```
 
-#### With NPM
-
-```
-npm install
-```
-
 #### With Yarn
 
 ```
