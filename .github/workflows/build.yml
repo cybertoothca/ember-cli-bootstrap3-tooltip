@@ -21,7 +21,7 @@ jobs:
 #        env:
 #          COVERAGE: 'true'
       - name: Run test
-        run: yarn test
+        run: ./node_modules/.bin/ember t
         env:
           COVERAGE: 'true'
       # Ideally, we would split up the test task into separate build and run
