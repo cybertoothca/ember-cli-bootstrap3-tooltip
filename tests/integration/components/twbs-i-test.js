@@ -1,23 +1,25 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { module, test } from 'qunit';
 
-moduleForComponent('twbs-i', 'Integration | Component | twbs i', {
-  integration: true
-});
+module('Integration | Component | twbs i', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('when without a block its class is set properly', function (assert) {
-  this.render(hbs`{{twbs-i}}`);
+  test('when without a block its class is set properly', async function(assert) {
+    await render(hbs`{{twbs-i}}`);
 
-  assert.ok(this.$('i').hasClass('twbs-i'));
-  assert.notOk(this.$('i').hasClass('twbs-span'));
-});
+    assert.ok(this.$('i').hasClass('twbs-i'));
+    assert.notOk(this.$('i').hasClass('twbs-span'));
+  });
 
-test('when with a block its class is set properly', function (assert) {
-  this.render(hbs`
-    {{#twbs-i}}
-      template block text
-    {{/twbs-i}}
-  `);
-  assert.ok(this.$('i').hasClass('twbs-i'));
-  assert.notOk(this.$('i').hasClass('twbs-span'));
+  test('when with a block its class is set properly', async function(assert) {
+    await render(hbs`
+      {{#twbs-i}}
+        template block text
+      {{/twbs-i}}
+    `);
+    assert.ok(this.$('i').hasClass('twbs-i'));
+    assert.notOk(this.$('i').hasClass('twbs-span'));
+  });
 });
