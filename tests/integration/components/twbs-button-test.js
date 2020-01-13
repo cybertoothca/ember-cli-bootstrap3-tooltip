@@ -1,4 +1,4 @@
-import { render, find } from '@ember/test-helpers';
+import { find, render } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
@@ -9,8 +9,8 @@ module('Integration | Component | twbs button', function(hooks) {
   test('when without a block its class is set properly', async function(assert) {
     await render(hbs`{{twbs-button}}`);
 
-    assert.ok(find('button').classList.contains('twbs-button'));
-    assert.notOk(find('button').classList.contains('twbs-span'));
+    assert.dom('button').hasClass('twbs-button');
+    assert.dom('button').hasNoClass('twbs-span');
   });
 
   test('when with a block its class is set properly', async function(assert) {
@@ -19,8 +19,8 @@ module('Integration | Component | twbs button', function(hooks) {
         template block text
       {{/twbs-button}}
     `);
-    assert.ok(find('button').classList.contains('twbs-button'));
-    assert.notOk(find('button').classList.contains('twbs-span'));
+    assert.dom('button').hasClass('twbs-button');
+    assert.dom('button').hasNoClass('twbs-span');
   });
 
   test('when supplying the autofocus attribute', async function(assert) {

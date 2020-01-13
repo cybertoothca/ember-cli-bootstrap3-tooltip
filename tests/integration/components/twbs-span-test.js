@@ -1,4 +1,4 @@
-import { render, find, findAll, click } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { isPresent } from '@ember/utils';
 import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
@@ -9,30 +9,30 @@ module('Integration | Component | twbs span', function(hooks) {
 
   test('when no block is passed', async function(assert) {
     await render(hbs`{{twbs-span}}`);
-    assert.ok(find('span').classList.contains('twbs-span'));
-    assert.equal(find('*').textContent.trim(), '');
+    assert.dom('span').hasClass('twbs-span');
+    assert.dom('*').hasText('');
   });
 
   test('when an empty block is passed', async function(assert) {
     await render(hbs`
       {{#twbs-span}}{{/twbs-span}}
     `);
-    assert.ok(find('span').classList.contains('twbs-span'));
-    assert.equal(find('*').textContent.trim(), '');
-    assert.equal(find('span').getAttribute('title'), '');
-    assert.equal(find('span').getAttribute('data-original-title'), '');
+    assert.dom('span').hasClass('twbs-span');
+    assert.dom('*').hasText('');
+    assert.dom('span').hasAttribute('title', '');
+    assert.dom('span').hasAttribute('data-original-title', '');
   });
 
   test('when a block is passed', async function(assert) {
     await render(hbs`
       {{#twbs-span title="Some sort of title"}}template block text{{/twbs-span}}
     `);
-    assert.ok(find('span').classList.contains('twbs-span'));
-    assert.equal(findAll('.twbs-tooltip-title').length, 0, 'Just making sure the title component is not being rendered.');
-    assert.equal(find('*').textContent.trim(), 'template block text');
-    assert.equal(find('span').getAttribute('title'), '', 'The title attribute is cleared');
-    assert.equal(find('span').getAttribute('data-original-title'), 'Some sort of title');
-    assert.equal(find('span').textContent.trim(), 'template block text');
+    assert.dom('span').hasClass('twbs-span');
+    assert.dom('.twbs-tooltip-title').doesNotExist('Just making sure the title component is not being rendered.');
+    assert.dom('*').hasText('template block text');
+    assert.dom('span').hasAttribute('title', '', 'The title attribute is cleared');
+    assert.dom('span').hasAttribute('data-original-title', 'Some sort of title');
+    assert.dom('span').hasText('template block text');
   });
 
   test('when a title component is yielded within the block', async function(assert) {
@@ -42,8 +42,8 @@ module('Integration | Component | twbs span', function(hooks) {
         {{#span.title}}This is the tooltip{{/span.title}}
       {{/twbs-span}}
     `);
-    assert.equal(findAll('.twbs-tooltip-title').length, 1);
-    assert.equal(find('.twbs-tooltip-title').textContent, 'This is the tooltip');
+    assert.dom('.twbs-tooltip-title').exists({ count: 1 });
+    assert.dom('.twbs-tooltip-title').hasText('This is the tooltip');
   });
 
   test('when triggering the show and hide action', async function(assert) {
@@ -56,14 +56,14 @@ module('Integration | Component | twbs span', function(hooks) {
       {{/twbs-span}}
     `);
 
-    assert.equal(findAll('div.tooltip').length, 0);
+    assert.dom('div.tooltip').doesNotExist();
 
     await click('#js-show');
-    assert.equal(findAll('div.tooltip.fade.in').length, 1);
+    assert.dom('div.tooltip.fade.in').exists({ count: 1 });
 
     await click('#js-hide');
-    assert.equal(findAll('div.tooltip.fade').length, 1);
-    assert.equal(findAll('div.tooltip.fade.in').length, 0);
+    assert.dom('div.tooltip.fade').exists({ count: 1 });
+    assert.dom('div.tooltip.fade.in').doesNotExist();
   });
 
   test('when triggering the toggle action', async function(assert) {
@@ -75,14 +75,14 @@ module('Integration | Component | twbs span', function(hooks) {
       {{/twbs-span}}
     `);
 
-    assert.equal(findAll('div.tooltip').length, 0);
+    assert.dom('div.tooltip').doesNotExist();
 
     await click('#js-toggle');
-    assert.equal(findAll('div.tooltip.fade.in').length, 1);
+    assert.dom('div.tooltip.fade.in').exists({ count: 1 });
 
     await click('#js-toggle');
-    assert.equal(findAll('div.tooltip.fade').length, 1);
-    assert.equal(findAll('div.tooltip.fade.in').length, 0);
+    assert.dom('div.tooltip.fade').exists({ count: 1 });
+    assert.dom('div.tooltip.fade.in').doesNotExist();
   });
 
   // TODO: this should be moved into an integration test to capitalize on the andThen helper
