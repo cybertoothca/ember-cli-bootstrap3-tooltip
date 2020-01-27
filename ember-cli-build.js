@@ -7,6 +7,7 @@ module.exports = function(defaults) {
     sassOptions: {
       includePaths: [
         'node_modules/bootstrap-sass/assets/stylesheets',
+        'node_modules/bootstrap-sass/assets/stylesheets/bootstrap',
         'node_modules/bootswatch/spacelab',
         'node_modules/font-awesome/scss'
       ]
