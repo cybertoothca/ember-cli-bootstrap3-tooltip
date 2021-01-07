@@ -7886,9 +7886,9 @@ sane@^3.0.0:
     fsevents "^1.2.3"
 
 sass@^1.24.4:
-  version "1.24.4"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.24.4.tgz#aa50575a9ed2b9e9645b5599156fd149bdad9eaa"
-  integrity sha512-SqizkIEEcVPzmK1tYdlNRl/RSXMEwGcifL9GD+S2p9rEPdj6ycRbk4PWZs0jwlajNSyBPo/SXRB81i22SG0jmw==
+  version "1.32.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.2.tgz#66dc0250bc86c15d19ddee7135e93d0cf3d3257b"
+  integrity sha512-u1pUuzqwz3SAgvHSWp1k0mRhX82b2DdlVnP6UIetQPZtYbuJUDaPQhZE12jyjB7vYeOScfz9WPsZJB6Rpk7heA==
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
