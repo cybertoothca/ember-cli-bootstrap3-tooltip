@@ -8,16 +8,6 @@
 
 This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](https://getbootstrap.com/docs/3.3/javascript/#tooltips).
 
-## Tested Against
-
-[![ember-lts-2.4](https://img.shields.io/badge/ember--try-ember--lts--2.4-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-[![ember-lts-2.8](https://img.shields.io/badge/ember--try-ember--lts--2.8-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-[![ember-lts-2.12](https://img.shields.io/badge/ember--try-ember--lts--2.12-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-
-[![ember-release](https://img.shields.io/badge/ember--try-ember--release-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-[![ember-beta](https://img.shields.io/badge/ember--try-ember--beta-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-[![ember-canary](https://img.shields.io/badge/ember--try-ember--canary-brightgreen.svg)](https://circleci.com/gh/cybertoothca/ember-cli-bootstrap3-tooltip)
-
 ## Demo
 
 The demonstration web application can be found here:
@@ -52,10 +42,6 @@ section below._
 
 ## Requirements
 
-- **Ember >= 2.3.0**: This addon uses the
-  [hash helper](http://emberjs.com/blog/2016/01/15/ember-2-3-released.html#toc_hash-helper) which was
-  introduced in Ember-2.3.0.
-- Ember CLI
 - You must have Bootstrap 3.x installed in your Ember application. Feel free to use the
   [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
   addon to setup Bootstrap if you haven't already done so.
@@ -321,6 +307,10 @@ git push --tags
 npm publish
 ember deploy production
 ```
+
+## Contributing
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## License
 
