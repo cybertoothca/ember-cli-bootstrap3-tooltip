@@ -1,53 +1,53 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 2017,
-    sourceType: 'module'
+    ecmaVersion: 2018,
+    sourceType: "module",
   },
-  plugins: [
-    'ember'
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended'
-  ],
+  plugins: ["ember"],
+  extends: ["eslint:recommended", "plugin:ember/recommended"],
   env: {
-    browser: true
+    browser: true,
   },
   rules: {
-    'no-console': ['error', { allow: ['warn', 'error'] }]
+    "ember/no-observers": "warn",
+    "no-console": ["error", { allow: ["warn", "error"] }],
   },
   overrides: [
     // node files
     {
       files: [
-        '.eslintrc.js',
-        '.template-lintrc.js',
-        'ember-cli-build.js',
-        'index.js',
-        'testem.js',
-        'blueprints/*/index.js',
-        'config/**/*.js',
-        'tests/dummy/config/**/*.js'
+        ".eslintrc.js",
+        ".template-lintrc.js",
+        "ember-cli-build.js",
+        "index.js",
+        "testem.js",
+        "blueprints/*/index.js",
+        "config/**/*.js",
+        "tests/dummy/config/**/*.js",
       ],
       excludedFiles: [
-        'addon/**',
-        'addon-test-support/**',
-        'app/**',
-        'tests/dummy/app/**'
+        "addon/**",
+        "addon-test-support/**",
+        "app/**",
+        "tests/dummy/app/**",
       ],
       parserOptions: {
-        sourceType: 'script',
-        ecmaVersion: 2015
+        sourceType: "script",
+        ecmaVersion: 2015,
       },
       env: {
         browser: false,
-        node: true
+        node: true,
       },
-      plugins: ['node'],
-      rules: Object.assign({}, require('eslint-plugin-node').configs.recommended.rules, {
-        // add your custom rules and overrides for node files here
-      })
-    }
-  ]
+      plugins: ["node"],
+      rules: Object.assign(
+        {},
+        require("eslint-plugin-node").configs.recommended.rules,
+        {
+          // add your custom rules and overrides for node files here
+        }
+      ),
+    },
+  ],
 };
