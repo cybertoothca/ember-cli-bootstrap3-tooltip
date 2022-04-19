@@ -4,30 +4,30 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
-      - python
-      - php
+        - ruby
+        - javascript
+        - python
+        - php
     exclude_fingerprints:
-    - 2948d76f42889cf4445fa2c62d7d07b6
-    - f18806158a8f1f815d109b6dbd98f928
-    - 1dd45ce9e2442849e8c0487a69c35041
+      - 2948d76f42889cf4445fa2c62d7d07b6
+      - f18806158a8f1f815d109b6dbd98f928
+      - 1dd45ce9e2442849e8c0487a69c35041
   eslint:
     enabled: true
   fixme:
     enabled: true
   watson:
-    enabled: false  # erroring with this addon
+    enabled: false # erroring with this addon
 ratings:
   paths:
-  - "**.inc"
-  - "**.js"
-  - "**.jsx"
-  - "**.module"
-  - "**.php"
-  - "**.py"
-  - "**.rb"
+    - '**.inc'
+    - '**.js'
+    - '**.jsx'
+    - '**.module'
+    - '**.php'
+    - '**.py'
+    - '**.rb'
 exclude_paths:
-- config/
-- tests/
-- vendor/
+  - config/
+  - tests/
+  - vendor/

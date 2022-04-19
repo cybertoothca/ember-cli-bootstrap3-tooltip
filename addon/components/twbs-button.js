@@ -12,12 +12,12 @@ export default TwbsSpan.extend({
     'formtarget',
     'name',
     'type',
-    'value'
+    'value',
   ],
   classNames: ['btn', 'twbs-button'],
   /**
    * This is a `button` tag.
    */
   tagName: 'button',
-  twbsSpan: false // turns of the style class `twbs-span` inherited from the `twbs-span` component.
+  twbsSpan: false, // turns of the style class `twbs-span` inherited from the `twbs-span` component.
 });

@@ -3,15 +3,15 @@
 module.exports = function (/*deployTarget*/) {
   let ENV = {
     build: {
-      environment: 'production'
+      environment: 'production',
     },
     // include other plugin configuration that applies to all deploy targets here
     s3: {
       bucket: 'ember-cli-bootstrap3-tooltip.cybertooth.io',
       filePattern: '**/*.{js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf,html}',
       profile: 'cybertooth',
-      region: 'ca-central-1'
-    }
+      region: 'ca-central-1',
+    },
   };
 
   // if (deployTarget === 'production') {

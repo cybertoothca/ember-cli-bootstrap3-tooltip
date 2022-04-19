@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 import { A } from '@ember/array';
 import { computed, getWithDefault, observer } from '@ember/object';
 import { alias, readOnly } from '@ember/object/computed';
@@ -15,19 +17,19 @@ export default Mixin.create({
      * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
      */
     hide() {
-      this.$().tooltip('hide');
+      $(this.element).tooltip('hide');
     },
     /**
      * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
      */
     show() {
-      this.$().tooltip('show');
+      $(this.element).tooltip('show');
     },
     /**
      * @see https://getbootstrap.com/docs/3.3/javascript/#tooltips-methods
      */
     toggle() {
-      this.$().tooltip('toggle');
+      $(this.element).tooltip('toggle');
     },
   },
   /**
@@ -144,7 +146,8 @@ export default Mixin.create({
    *
    * The outermost wrapper element should have the .tooltip class.
    */
-  template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+  template:
+    '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
   /**
    * Appends the tooltip to a specific element. Example: container: 'body'. This option is particularly
    * useful in that it allows you to position the tooltip in the flow of the document near the
@@ -170,12 +173,11 @@ export default Mixin.create({
    * @returns {*|Object}
    */
   getOptions() {
-    const hash =
-      this.getProperties('animation', 'html', 'placement', 'sanitize', 'selector', 'template', 'viewport');
-    hash.container = this.get('tooltipContainer');
-    hash.delay = this.get('_delayComputed');
-    hash.trigger = this.get('tooltipTrigger');
-    hash.title = this.get('defaultTitle');
+    const hash = this.getProperties('animation', 'html', 'placement', 'sanitize', 'selector', 'template', 'viewport');
+    hash.container = this.tooltipContainer;
+    hash.delay = this._delayComputed;
+    hash.trigger = this.tooltipTrigger;
+    hash.title = this.defaultTitle;
     return hash;
   },
   /**
@@ -184,9 +186,9 @@ export default Mixin.create({
    * Object structure is: `delay: { "show": 500, "hide": 100 }`.
    * @private
    */
-  _delayComputed: computed('delay', 'delayHide', 'delayShow', function() {
+  _delayComputed: computed('delay', 'delayHide', 'delayShow', function () {
     const delayObject = {};
-    const delay = this.get('delay');
+    const delay = this.delay;
 
     delayObject.hide = getWithDefault(this, 'delayHide', delay);
     delayObject.show = getWithDefault(this, 'delayShow', delay);
@@ -197,29 +199,37 @@ export default Mixin.create({
    * Destroy the bootstrap tooltip when the component is being destroyed.
    * @private
    */
-  _destroyBoostrapTooltip: on('willDestroyElement', observer('title', function() {
-    if (isPresent(this.get('title'))) {
-      this.$().tooltip('destroy');
-    }
-  })),
+  _destroyBoostrapTooltip: on(
+    'willDestroyElement',
+    observer('title', function () {
+      if (isPresent(this.title)) {
+        $(this.element).tooltip('destroy');
+      }
+    })
+  ),
   /**
    * Initialize the bootstrap tooltip if the title attribute is present.
    * @private
    */
-  _initializeBootstrapTooltip: on('didInsertElement', observer('title', function() {
-    const $tooltip = this.$().tooltip(this.getOptions());
-    A().pushObjects([
-      { twbsEvent: 'hide.bs.tooltip', handler: this.get('onHide') },
-      { twbsEvent: 'hidden.bs.tooltip', handler: this.get('onHidden') },
-      { twbsEvent: 'inserted.bs.tooltip', handler: this.get('onInserted') },
-      { twbsEvent: 'show.bs.tooltip', handler: this.get('onShow') },
-      { twbsEvent: 'shown.bs.tooltip', handler: this.get('onShown') }
-    ]).forEach((event) => {
-      $tooltip.on(event.twbsEvent, () => {
-        if (isPresent(event.handler)) {
-          event.handler(this.$(), this);
-        }
-      })
+  _initializeBootstrapTooltip: on(
+    'didInsertElement',
+    observer('title', function () {
+      const $tooltip = $(this.element).tooltip(this.getOptions());
+      A()
+        .pushObjects([
+          { twbsEvent: 'hide.bs.tooltip', handler: this.onHide },
+          { twbsEvent: 'hidden.bs.tooltip', handler: this.onHidden },
+          { twbsEvent: 'inserted.bs.tooltip', handler: this.onInserted },
+          { twbsEvent: 'show.bs.tooltip', handler: this.onShow },
+          { twbsEvent: 'shown.bs.tooltip', handler: this.onShown },
+        ])
+        .forEach(event => {
+          $tooltip.on(event.twbsEvent, () => {
+            if (isPresent(event.handler)) {
+              event.handler($tooltip, this);
+            }
+          });
+        });
     })
-  }))
+  ),
 });

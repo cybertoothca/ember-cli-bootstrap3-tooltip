@@ -5,7 +5,7 @@ export default Route.extend({
     const sept11 = new Date(2001, 8, 11);
     return {
       timeDemoString: sept11.toString(),
-      timeDemoISOString: sept11.toISOString()
-    }
-  }
+      timeDemoISOString: sept11.toISOString(),
+    };
+  },
 });

@@ -4,16 +4,16 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 
-module('Integration | Component | twbs span', function(hooks) {
+module('Integration | Component | twbs span', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('when no block is passed', async function(assert) {
+  test('when no block is passed', async function (assert) {
     await render(hbs`{{twbs-span}}`);
     assert.dom('span').hasClass('twbs-span');
     assert.dom('*').hasText('');
   });
 
-  test('when an empty block is passed', async function(assert) {
+  test('when an empty block is passed', async function (assert) {
     await render(hbs`
       {{#twbs-span}}{{/twbs-span}}
     `);
@@ -23,7 +23,7 @@ module('Integration | Component | twbs span', function(hooks) {
     assert.dom('span').hasAttribute('data-original-title', '');
   });
 
-  test('when a block is passed', async function(assert) {
+  test('when a block is passed', async function (assert) {
     await render(hbs`
       {{#twbs-span title="Some sort of title"}}template block text{{/twbs-span}}
     `);
@@ -35,7 +35,7 @@ module('Integration | Component | twbs span', function(hooks) {
     assert.dom('span').hasText('template block text');
   });
 
-  test('when a title component is yielded within the block', async function(assert) {
+  test('when a title component is yielded within the block', async function (assert) {
     await render(hbs`
       {{#twbs-span as |span|}}
         Block With Title Component
@@ -46,7 +46,7 @@ module('Integration | Component | twbs span', function(hooks) {
     assert.dom('.twbs-tooltip-title').hasText('This is the tooltip');
   });
 
-  test('when triggering the show and hide action', async function(assert) {
+  test('when triggering the show and hide action', async function (assert) {
     await render(hbs`
       {{#twbs-span tooltipTrigger="manual" as |span hide show toggle|}}
         Block With Title Component
@@ -66,7 +66,7 @@ module('Integration | Component | twbs span', function(hooks) {
     assert.dom('div.tooltip.fade.in').doesNotExist();
   });
 
-  test('when triggering the toggle action', async function(assert) {
+  test('when triggering the toggle action', async function (assert) {
     await render(hbs`
       {{#twbs-span tooltipTrigger="manual" as |span hide show toggle|}}
         Block With Title Component
@@ -86,35 +86,39 @@ module('Integration | Component | twbs span', function(hooks) {
   });
 
   // TODO: this should be moved into an integration test to capitalize on the andThen helper
-  test('when binding to the onHide event', async function(assert) {
-    let isHide = false, isHidden = false, isInserted = false, isShow = false, isShown = false;
+  test('when binding to the onHide event', async function (assert) {
+    let isHide = false,
+      isHidden = false,
+      isInserted = false,
+      isShow = false,
+      isShown = false;
 
     this.setProperties({
-      onHideAction: function($element, component) {
+      onHideAction: function ($element, component) {
         isHide = true;
         assert.ok(isPresent($element));
         assert.ok(isPresent(component));
       },
-      onHiddenAction: function(/*$element, component*/) {
+      onHiddenAction: function (/*$element, component*/) {
         isHidden = true;
         // assert.ok(Ember.isPresent($element));
         // assert.ok(Ember.isPresent(component));
       },
-      onInsertedAction: function($element, component) {
+      onInsertedAction: function ($element, component) {
         isInserted = true;
         assert.ok(isPresent($element));
         assert.ok(isPresent(component));
       },
-      onShowAction: function($element, component) {
+      onShowAction: function ($element, component) {
         isShow = true;
         assert.ok(isPresent($element));
         assert.ok(isPresent(component));
       },
-      onShownAction: function(/*$element, component*/) {
+      onShownAction: function (/*$element, component*/) {
         isShown = true;
         // assert.ok(Ember.isPresent($element));
         // assert.ok(Ember.isPresent(component));
-      }
+      },
     });
 
     await render(hbs`
