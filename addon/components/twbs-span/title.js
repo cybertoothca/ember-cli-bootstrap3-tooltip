@@ -13,10 +13,10 @@ export default Component.extend({
   didInsertElement() {
     this._super(arguments);
 
-    if (isPresent(this.get('register'))) {
-      this.get('register')(this.get('element').querySelector('.twbs-tooltip-title'));
+    if (isPresent(this.register)) {
+      this.register(this.element.querySelector('.twbs-tooltip-title'));
     } else {
       console.warn('The `twbs-span.title` component should have an action assigned to its `register` property.');
     }
-  }
+  },
 });

@@ -6,5 +6,5 @@ export default TwbsSpan.extend({
    * This is a `abbr` tag.
    */
   tagName: 'abbr',
-  twbsSpan: false // turns of the style class `twbs-span` inherited from the `twbs-span` component.
+  twbsSpan: false, // turns of the style class `twbs-span` inherited from the `twbs-span` component.
 });

@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 
-module('Integration | Component | twbs abbr', function(hooks) {
+module('Integration | Component | twbs abbr', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('when no block is passed', async function(assert) {
+  test('when no block is passed', async function (assert) {
     await render(hbs`{{twbs-abbr}}`);
 
     assert.dom('abbr').hasClass('twbs-abbr');
@@ -14,7 +14,7 @@ module('Integration | Component | twbs abbr', function(hooks) {
     assert.dom('abbr').hasNoClass('twbs-span');
   });
 
-  test('when an empty block is passed', async function(assert) {
+  test('when an empty block is passed', async function (assert) {
     await render(hbs`
       {{#twbs-abbr}}{{/twbs-abbr}}
     `);
@@ -25,7 +25,7 @@ module('Integration | Component | twbs abbr', function(hooks) {
     assert.dom('abbr').hasNoClass('twbs-span');
   });
 
-  test('when a block is passed', async function(assert) {
+  test('when a block is passed', async function (assert) {
     await render(hbs`
       {{#twbs-abbr title="Some sort of title"}}template block text{{/twbs-abbr}}
     `);
@@ -37,7 +37,7 @@ module('Integration | Component | twbs abbr', function(hooks) {
     assert.dom('abbr').hasNoClass('twbs-span');
   });
 
-  test('when rendering with the class `initialism`', async function(assert) {
+  test('when rendering with the class `initialism`', async function (assert) {
     await render(hbs`
       {{#twbs-abbr title="Some tooltip message." class='initialism'}}ABBR{{/twbs-abbr}}
     `);

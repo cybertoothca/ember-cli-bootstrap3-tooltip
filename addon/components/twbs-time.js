@@ -7,5 +7,5 @@ export default TwbsSpan.extend({
    * This is a `time` tag.
    */
   tagName: 'time',
-  twbsSpan: false // turns of the style class `twbs-span` inherited from the `twbs-span` component.
+  twbsSpan: false, // turns of the style class `twbs-span` inherited from the `twbs-span` component.
 });

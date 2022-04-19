@@ -1,19 +1,40 @@
-# ember-cli-bootstrap3-tooltip [![GitHub version](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/gh/cybertoothca%2Fember-cli-bootstrap3-tooltip)
+# ember-cli-bootstrap3-tooltip
 
-![https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/actions](https://github.com/cybertoothca/ember-cli-bootstrap3-tooltip/workflows/Build,%20Test,%20Publish%20Coverage/badge.svg)
+[![npm version](http://badge.fury.io/js/ember-cli-date-textbox.svg)](http://badge.fury.io/js/ember-cli-date-textbox) ![downloads](https://img.shields.io/npm/dy/ember-cli-date-textbox.svg) [![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-date-textbox/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-date-textbox)
 
-[![Code Climate](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip/badges/gpa.svg)](http://codeclimate.com/github/cybertoothca/ember-cli-bootstrap3-tooltip)
-
-[![npm version](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip.svg)](http://badge.fury.io/js/ember-cli-bootstrap3-tooltip) ![downloads](https://img.shields.io/npm/dy/ember-cli-bootstrap3-tooltip.svg) ![Dependencies](http://david-dm.org/cybertoothca/ember-cli-bootstrap3-tooltip.svg) [![ember observer](http://emberobserver.com/badges/ember-cli-bootstrap3-tooltip.svg)](http://emberobserver.com/addons/ember-cli-bootstrap3-tooltip) [![License](http://img.shields.io/npm/l/ember-cli-bootstrap3-tooltip.svg)](LICENSE.md)
+[![ember-observer-badge](http://emberobserver.com/badges/ember-cli-date-textbox.svg)](http://emberobserver.com/addons/ember-cli-date-textbox)
 
 This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](https://getbootstrap.com/docs/3.3/javascript/#tooltips).
+
+## Compatibility
+
+- Ember.js v2.18 or above
+- Ember CLI v2.13 or above
+- Node.js v8 or above
+
+## Installation
+
+The following will install this addon:
+
+```
+ember install ember-cli-bootstrap3-tooltip
+```
+
+### Dependencies
+
+- You must have Bootstrap 3.x installed in your Ember application. Feel free to use the
+  [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
+  addon to setup Bootstrap if you haven't already done so.
+- Tooltips require the _tooltip_ plugin to be included in your version of Bootstrap.
 
 ## Demo
 
 The demonstration web application can be found here:
 [http://ember-cli-bootstrap3-tooltip.cybertooth.io/](http://ember-cli-bootstrap3-tooltip.cybertooth.io/).
 
-## What Does This Addon Do?
+## Usage
+
+### What Does This Addon Do?
 
 This addon supplied the following _components_:
 
@@ -36,40 +57,6 @@ This addon supplied the following _components_:
 - `TwbsTooltip` - imported as
   `import TwbsTooltip as 'ember-cli-bootstrap3-tooltip/mixins/twbs-tooltip'` and
   can be added to new or existing components.
-
-_Further information about these items can be found in the Usage
-section below._
-
-## Requirements
-
-- You must have Bootstrap 3.x installed in your Ember application. Feel free to use the
-  [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
-  addon to setup Bootstrap if you haven't already done so.
-- Tooltips require the _tooltip_ plugin to be included in your version of Bootstrap.
-
-## Installation
-
-The following will install this addon:
-
-```
-ember install ember-cli-bootstrap3-tooltip
-```
-
-**As mentioned, you must install Bootstrap3's tooltip styles and script plugin. See the requirements section above.**
-
-## Compatibility
-
-- Ember.js v2.18 or above
-- Ember CLI v2.13 or above
-- Node.js v8 or above
-
-### Upgrading
-
-When working through the Ember upgrade process, I recommend
-invoking the `ember install ember-cli-bootstrap3-tooltip` command once
-you are done to get the latest version of the addon.
-
-## Usage
 
 ### Components
 
@@ -171,7 +158,7 @@ Here's an example from the [demo site](http://ember-cli-bootstrap3-tooltip.cyber
 icon with the current time changing in the tooltip:
 
 ```hbs
-{{#twbs-i class="glyphicon glyphicon-time" placement="right" as |i|}}
+{{#twbs-i class='glyphicon glyphicon-time' placement='right' as |i|}}
   {{#i.title}}{{clock.hour}}:{{clock.minute}}:{{clock.second}}{{/i.title}}
 {{/twbs-i}}
 ```
@@ -214,100 +201,6 @@ as all have been exposed in this mixin, with the following cavaets:
 
 1. If you have a title that is dynamic use the nested title component.
 1. Make sure the Bootstrap3 CSS and the tooltip Javascript plugin is installed.
-
----
-
-## Ember Addon Building And Testing
-
-### Setup
-
-#### Checkout
-
-```
-$ git clone git@github.com:cybertoothca/ember-cli-bootstrap3-tooltip.git
-```
-
-#### With Yarn
-
-```
-yarn
-```
-
-### Running The Dummy Application
-
-- `ember server`
-- Visit your app at http://localhost:4200.
-
-### Linting
-
-- `yarn lint:hbs`
-- `yarn lint:js`
-- `yarn lint:js -- --fix`
-
-### Running Addon Tests
-
-- `yarn test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-- `ember test`
-- `ember test --server`
-
-### Building The Addon
-
-- `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
-
-## Linking This Addon For Local Testing
-
-### Linking
-
-1. From the command line at the root of **this** project run the
-   `npm link` command to _link_ this addon within your local
-   node repository.
-1. From the _other_ Ember project that you wish to test this addon
-   in, execute the following command:
-   `npm link ember-cli-bootstrap3-tooltip`.
-1. Now in that same _other_ Ember project, you should go into the
-   `package.json` and add the ember addon with the version _\*_. It will
-   look something like this: `"ember-cli-bootstrap3-tooltip": "*"`. Now
-   when/if you execute `npm install` on this _other_ project it
-   will know to look for the linked addon rather than fetch it from
-   the central repository.
-
-### Unlinking
-
-1. Remove the addon from your local node repository with the following
-   command (that can be run anywhere):
-   `npm uninstall -g ember-cli-bootstrap3-tooltip`
-1. Remove the reference to the `ember-cli-bootstrap3-tooltip`
-   in your _other_ project's `package.json`.
-1. Run an `npm prune` and `bower prune` from the root of your _other_ project's command line.
-
-### Deploying The Dummy Application
-
-Make sure your `~/.aws/credentials` file has a profile named _cybertooth_
-with a valid key and secret,
-
-```
-[cybertooth]
-aws_access_key_id = <KEY>
-aws_secret_access_key = <SECRET>
-```
-
-Deploy by invoking the following command: `ember deploy production`
-
-Confirm your changes are showing up in our S3 container: http://ember-cli-bootstrap3-tooltip.cybertooth.io/
-
-## Releasing & Publishing To NPM
-
-The steps are listed below; roll the version, push the changes to Git, publish to NPM, and update the demo website.
-
-```
-npm version x.y.z-sub.#
-git push
-git push --tags
-npm publish
-ember deploy production
-```
 
 ## Contributing
 

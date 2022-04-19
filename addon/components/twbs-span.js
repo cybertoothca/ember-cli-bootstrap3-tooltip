@@ -13,7 +13,7 @@ export default Component.extend(TwbsTooltip, {
       this.set('html?', true);
       this.set('defaultTitle', title);
       this.set('sanitize', false);
-    }
+    },
   },
   classNameBindings: ['twbsSpan'],
   layout,
@@ -21,5 +21,5 @@ export default Component.extend(TwbsTooltip, {
    * This is a `span` tag.
    */
   tagName: 'span',
-  twbsSpan: true
+  twbsSpan: true,
 });
