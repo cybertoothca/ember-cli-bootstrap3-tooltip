@@ -16,9 +16,12 @@ This addon allows you to quickly and conveniently create a [Bootstrap3 Tooltip](
 
 The following will install this addon:
 
+
 ```
 ember install ember-cli-bootstrap3-tooltip
 ```
+To know more about installation [Click here](https://www.scaler.com/topics/css/install-bootstrap/)
+
 
 ### Dependencies
 
