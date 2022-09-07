@@ -25,7 +25,7 @@ ember install ember-cli-bootstrap3-tooltip
 - You must have Bootstrap 3.x installed in your Ember application. Feel free to use the
   [ember-cli-bootstrap3-sass](http://emberobserver.com/addons/ember-cli-bootstrap3-sass)
   addon to setup Bootstrap if you haven't already done so.
-- Tooltips require the _tooltip_ plugin to be included in your version of Bootstrap.
+- Tooltips require the _tooltip_ plugin to be included in your version of [Bootstrap](https://www.interviewbit.com/bootstrap-cheat-sheet).
 
 ## Demo
 
